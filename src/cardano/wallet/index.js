@@ -1,5 +1,6 @@
 import Cardano from "../serialization-lib";
 import { fromHex } from "../../utils/converter";
+import { Buffer } from "buffer";
 
 class Wallet {
 

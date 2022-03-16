@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 import {
   availableWallets,
@@ -40,6 +41,7 @@ const ButtonWallet = ({
 
   function onclick_connect_wallet() {
     availableWallets((res) => {
+      console.log(res)
       if (res.wallets.length === 0) {
         setShowNotification("no-wallet");
       } else if (res.wallets.length === 1) {
@@ -54,12 +56,14 @@ const ButtonWallet = ({
     setShowWallets(false);
     connectWallet(wallet_name, (res) => {
       if (!res.success) {
+        NotificationManager.error(`${res.msg}`)
         setShowNotificationMessage(res.msg);
       }
     });
   }
 
   useEffect(() => {
+    
     if (state_wallet.loading) {
       if (
         [
@@ -97,6 +101,7 @@ const ButtonWallet = ({
             //setShow(!show);
             if (!state_wallet.connected) {
               console.log("connecting...");
+              NotificationManager.info('connecting...')
               onclick_connect_wallet()
             } else {
               console.log("...connected");
@@ -111,7 +116,7 @@ const ButtonWallet = ({
           />
         </a>
       }
-      {showNotification || showNotificationMessage !== false ? (
+      {/* {showNotification || showNotificationMessage !== false ? (
         <div className="notification-window notification is-info">
           <button
             className="delete"
@@ -141,7 +146,7 @@ const ButtonWallet = ({
         </div>
       ) : (
         <></>
-      )}
+      )} */}
     </>
   );
 };

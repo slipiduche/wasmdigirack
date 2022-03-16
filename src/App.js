@@ -28,10 +28,15 @@ import { useDispatch, useSelector } from "react-redux";
 import SweetAlert from "react-bootstrap-sweetalert";
 import Cardano from "./cardano/serialization-lib/index";
 import Dapp from "./cardano/TestingApp";
+import 'react-notifications/lib/notifications.css';
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
 
 function App() {
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     let resizeTimer;
     window.addEventListener("resize", () => {
@@ -42,12 +47,12 @@ function App() {
       }, 400);
     });
   });
-  
 
   return (
     <div className="ff_poppins">
       <Router>
         <Navbar />
+        <NotificationContainer/>
         <ScrollToTop />
         <Routes>
           <Route exact path="/" element={<Home />} />
