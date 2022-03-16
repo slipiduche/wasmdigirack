@@ -3,12 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 // import 'tw-elements';
+// redux store
+import { Provider } from "react-redux";
+import reduxThunk from "redux-thunk";
+import reducers from "./store/reducers";
+import { createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 import reportWebVitals from './reportWebVitals';
 
+const middleware = [reduxThunk];
+const store = createStore(
+  reducers,
+  composeWithDevTools(applyMiddleware(...middleware))
+);
+
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
