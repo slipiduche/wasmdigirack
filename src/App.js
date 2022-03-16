@@ -25,6 +25,7 @@ import ConnectWallet from './layouts/ConnectWallet/ConnectWallet';
 import { useEffect } from 'react';
 import AllCollections from './layouts/Collections/AllCollections';
 import Cardano from "./cardano/serialization-lib/index";
+import Dapp from "./cardano/TestingApp";
 
 function App() {
 
@@ -55,7 +56,7 @@ function App() {
           <Route exact path = '/blog' element={<Blog/>} />
           <Route exact path = '/helpcenter' element={<HelpCenter/>} />
           <Route exact path = '/platformstats' element={<PlatformStats/>} />
-          <Route exact path = '/connectwallet' element={<ConnectWallet/>} />
+          <Route exact path = '/connectwallet' element={<Dapp/>} />
           <Route path = '/collection/:id' element = {<CollectionItem/>} />
           <Route path = "/collections/*" element = {
             <Routes>
