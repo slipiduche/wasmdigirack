@@ -786,7 +786,7 @@ export default class Dapp extends React.Component {
               <div style={{ marginLeft: "20px" }}>
                 <button
                  
-                 class="purple_button"
+                 class="gray1_button"
                   onClick={async () => {
                     const shelleyChangeAddress =
                       Cardano.Instance.Address.from_bech32(
