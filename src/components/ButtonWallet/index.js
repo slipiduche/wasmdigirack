@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 import {
   walletConnected,
   setWalletLoading,
@@ -45,6 +46,7 @@ const ButtonWallet = ({
   connectWallet,
   loadAssets,
 }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [showNotification, setShowNotification] = useState(false);
   const [showNotificationMessage, setShowNotificationMessage] = useState(false);
@@ -55,7 +57,7 @@ const ButtonWallet = ({
       console.log(res);
       if (res.wallets.length === 0) {
         setShowNotification("no-wallet");
-        dispatch(setWalletLoading(WALLET_STATE.NO_WALLETS))
+        dispatch(setWalletLoading(WALLET_STATE.NO_WALLETS));
       } else if (res.wallets.length === 1) {
         connect_wallet(res.wallets[0]);
       } else if (res.wallets.length > 1) {
@@ -78,7 +80,7 @@ const ButtonWallet = ({
 
   useEffect(() => {
     if (state_wallet.loading) {
-      console.log(state_wallet.loading);
+      // console.log(state_wallet.loading);
       if (
         [
           "no-wallet",
@@ -89,6 +91,11 @@ const ButtonWallet = ({
         ].includes(state_wallet.loading)
       )
         NotificationManager.info(`${state_wallet.loading}`);
+
+      console.log(state_wallet.loading);
+      if (state_wallet.loading == "NO_WALLETS") {
+        navigate("/connectwallet");
+      }
     } else {
       setShowNotification(false);
     }
@@ -112,21 +119,7 @@ const ButtonWallet = ({
 
   return (
     <>
-      {state_wallet.loading=='NO_WALLETS'? (
-        <Link
-          onClick={() => {
-            //setShow(!show);
-          }}
-          to="/connectwallet"
-          className="block px-5 mt-4 lg:inline-block lg:mt-0 mb-4 lg:mb-0"
-        >
-          <img
-            src={require("../../images/Navbar/wallet.png")}
-            alt="wallet"
-            className="max-w-[1.7rem]"
-          />
-        </Link>
-      ) : (
+      {
         <a
           onClick={() => {
             //setShow(!show);
@@ -146,7 +139,7 @@ const ButtonWallet = ({
             className="max-w-[1.7rem]"
           />
         </a>
-      )}
+      }
       {/* {
         <Link
           onClick={() => {
