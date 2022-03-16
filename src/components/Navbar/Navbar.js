@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ButtonWallet from "../ButtonWallet";
 import './Navbar.css'
 
 const Navbar = () => {
@@ -162,9 +163,10 @@ const Navbar = () => {
                         Create
                     </Link>
 
-                    <Link onClick = {()=>{setShow(!show)}} to = "/connectwallet" className="block px-5 mt-4 lg:inline-block lg:mt-0 mb-4 lg:mb-0">
+                    {/* <Link onClick = {()=>{setShow(!show)}} to = "/connectwallet" className="block px-5 mt-4 lg:inline-block lg:mt-0 mb-4 lg:mb-0">
                         <img src = {require('../../images/Navbar/wallet.png')} alt = "wallet" className="max-w-[1.7rem]" />
-                    </Link>
+                    </Link> */}
+                    <ButtonWallet/>
 
             
 

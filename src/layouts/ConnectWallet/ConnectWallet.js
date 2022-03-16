@@ -28,7 +28,7 @@ const ConnectWallet = () => {
                 <p className="text-lg md:text-xl font-medium">Nami Wallet</p>
               </div>
             </button>
-            <p className="text-lg md:text-xl font-medium">Popular</p>
+            <p className="text-lg md:text-xl font-medium">Popular (recommended)</p>
           </div>
 
           <div className="flex items-center justify-between w-full px-4 md:px-8 xl:px-12 py-6 border-b-2 border-gray-400">
@@ -40,7 +40,7 @@ const ConnectWallet = () => {
               />
               <p className="text-lg md:text-xl font-medium">CCvault wallet</p>
             </div>
-            <p className="text-lg md:text-xl font-medium"></p>
+            <p className="text-lg md:text-xl font-medium">comming soon...</p>
           </div>
 
           <div className="flex items-center justify-between w-full px-4 md:px-8 xl:px-12 py-6 border-b-2 border-gray-400">
@@ -52,7 +52,7 @@ const ConnectWallet = () => {
               />
               <p className="text-lg md:text-xl font-medium">Cero wallet</p>
             </div>
-            <p className="text-lg md:text-xl font-medium"></p>
+            <p className="text-lg md:text-xl font-medium">comming soon...</p>
           </div>
 
           <div className="flex items-center justify-between w-full px-4 md:px-8 xl:px-12 py-6 border-b-2 border-gray-400">
@@ -64,7 +64,7 @@ const ConnectWallet = () => {
               />
               <p className="text-lg md:text-xl font-medium">Yoroi wallet</p>
             </div>
-            <p className="text-lg md:text-xl font-medium"></p>
+            <p className="text-lg md:text-xl font-medium">comming soon...</p>
           </div>
         </div>
       </div>

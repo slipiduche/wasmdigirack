@@ -30,6 +30,7 @@ import Cardano from "./cardano/serialization-lib/index";
 import Dapp from "./cardano/TestingApp";
 
 function App() {
+  const dispatch = useDispatch();
   
   useEffect(() => {
     let resizeTimer;
@@ -41,7 +42,7 @@ function App() {
       }, 400);
     });
   });
-  const dispatch = useDispatch();
+  
 
   return (
     <div className="ff_poppins">
