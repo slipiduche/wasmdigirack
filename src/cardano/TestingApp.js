@@ -697,7 +697,7 @@ export default class Dapp extends React.Component {
 
   render() {
     return (
-      <div style={{ margin: "20px" }}>
+      <div className="bg-white" style={{ margin: "20px" }}>
         <h1>Boilerplate DApp connector to Wallet</h1>
         <div style={{ paddingTop: "10px" }}>
           <RadioGroup
@@ -711,8 +711,7 @@ export default class Dapp extends React.Component {
             <Radio label="Flint" value="flint" />
           </RadioGroup>
         </div>
-
-        <button style={{ padding: "20px" }} onClick={this.refreshData}>
+        <button class="text-white mt-[20px] px-24 py-6 text-[30px] px-10 py-5 blue_button text-xl font-bold" onClick={this.refreshData}>
           Refresh
         </button>
 
@@ -786,7 +785,8 @@ export default class Dapp extends React.Component {
             panel={
               <div style={{ marginLeft: "20px" }}>
                 <button
-                  style={{ padding: "10px" }}
+                 
+                 class="purple_button"
                   onClick={async () => {
                     const shelleyChangeAddress =
                       Cardano.Instance.Address.from_bech32(
@@ -881,6 +881,7 @@ export default class Dapp extends React.Component {
 
                 <button
                   style={{ padding: "10px" }}
+                  class="purple_button"
                   onClick={async () => {
                     const shelleyChangeAddress =
                       Cardano.Instance.Address.from_bech32(
@@ -974,6 +975,7 @@ export default class Dapp extends React.Component {
                 </p>
 
                 <button
+                 class="purple_button"
                   style={{ padding: "10px" }}
                   onClick={async () => {
                     console.log("press");
