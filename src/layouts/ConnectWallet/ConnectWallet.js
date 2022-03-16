@@ -14,7 +14,8 @@ const ConnectWallet = () => {
 
         <div className="max-w-[969px] mx-auto rounded-xl border-2 border-white mb-[156px] mt-[68px]">
           <div className="flex items-center justify-between w-full px-4 md:px-8 xl:px-12 py-6 border-b-2 border-gray-400">
-            <button
+            <a
+              href="https://namiwallet.io/"
               onClick={() => {
                 console.log("connecting....Nami");
               }}
@@ -27,8 +28,10 @@ const ConnectWallet = () => {
                 />
                 <p className="text-lg md:text-xl font-medium">Nami Wallet</p>
               </div>
-            </button>
-            <p className="text-lg md:text-xl font-medium">Popular (recommended)</p>
+            </a>
+            <p className="text-lg md:text-xl font-medium">
+              Popular (recommended)
+            </p>
           </div>
 
           <div className="flex items-center justify-between w-full px-4 md:px-8 xl:px-12 py-6 border-b-2 border-gray-400">

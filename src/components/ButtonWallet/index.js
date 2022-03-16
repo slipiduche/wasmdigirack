@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import {
+  walletConnected,
+  setWalletLoading,
+  setWalletData,
+} from "../../store/wallet/walletActions";
 
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
 
 import {
   availableWallets,
@@ -11,6 +20,7 @@ import {
 } from "../../store/wallet/api";
 import { WALLET_STATE } from "../../store/wallet/walletTypes";
 import { FadeImg } from "../Fades";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./style.scss";
 
@@ -35,15 +45,17 @@ const ButtonWallet = ({
   connectWallet,
   loadAssets,
 }) => {
+  const dispatch = useDispatch();
   const [showNotification, setShowNotification] = useState(false);
   const [showNotificationMessage, setShowNotificationMessage] = useState(false);
   const [showWallets, setShowWallets] = useState(false);
 
   function onclick_connect_wallet() {
     availableWallets((res) => {
-      console.log(res)
+      console.log(res);
       if (res.wallets.length === 0) {
         setShowNotification("no-wallet");
+        dispatch(setWalletLoading(WALLET_STATE.NO_WALLETS))
       } else if (res.wallets.length === 1) {
         connect_wallet(res.wallets[0]);
       } else if (res.wallets.length > 1) {
@@ -56,25 +68,27 @@ const ButtonWallet = ({
     setShowWallets(false);
     connectWallet(wallet_name, (res) => {
       if (!res.success) {
-        NotificationManager.error(`${res.msg}`)
+        NotificationManager.error(`${res.msg}`);
         setShowNotificationMessage(res.msg);
-      }
+      } //  else {
+      //   NotificationManager.success(`connected ${wallet_name}`);
+      // }
     });
   }
 
   useEffect(() => {
-    
     if (state_wallet.loading) {
+      console.log(state_wallet.loading);
       if (
         [
           "no-wallet",
           "no-accept",
-          "connected",
+
           WALLET_STATE.CONNECTING,
           WALLET_STATE.GETTING_ASSETS,
         ].includes(state_wallet.loading)
       )
-        setShowNotification(state_wallet.loading);
+        NotificationManager.info(`${state_wallet.loading}`);
     } else {
       setShowNotification(false);
     }
@@ -84,6 +98,9 @@ const ButtonWallet = ({
       !state_wallet.loading &&
       !state_wallet.loaded_assets
     ) {
+      console.log(state_wallet);
+      NotificationManager.success(`${"connected"}`);
+
       loadAssets(state_wallet, (res) => {});
     }
   }, [loadAssets, state_wallet]);
@@ -95,16 +112,30 @@ const ButtonWallet = ({
 
   return (
     <>
-      {
+      {state_wallet.loading=='NO_WALLETS'? (
+        <Link
+          onClick={() => {
+            //setShow(!show);
+          }}
+          to="/connectwallet"
+          className="block px-5 mt-4 lg:inline-block lg:mt-0 mb-4 lg:mb-0"
+        >
+          <img
+            src={require("../../images/Navbar/wallet.png")}
+            alt="wallet"
+            className="max-w-[1.7rem]"
+          />
+        </Link>
+      ) : (
         <a
           onClick={() => {
             //setShow(!show);
             if (!state_wallet.connected) {
-              console.log("connecting...");
-              NotificationManager.info('connecting...')
-              onclick_connect_wallet()
+              // console.log("connecting...");
+
+              onclick_connect_wallet();
             } else {
-              console.log("...connected");
+              // console.log("...connected");
             }
           }}
           className="block px-5 mt-4 lg:inline-block lg:mt-0 mb-4 lg:mb-0"
@@ -115,38 +146,22 @@ const ButtonWallet = ({
             className="max-w-[1.7rem]"
           />
         </a>
-      }
-      {/* {showNotification || showNotificationMessage !== false ? (
-        <div className="notification-window notification is-info">
-          <button
-            className="delete"
-            onClick={() => clear_notification()}
-          ></button>
-          {showNotification === "no-wallet" ? (
-            <p>
-              No wallet installed.{" "}
-              <a href="https://namiwallet.io/" target="_blank" rel="noreferrer">
-                Get it now
-              </a>
-              .
-            </p>
-          ) : showNotification === "no-accept" ? (
-            <p>You need to allow wallet access.</p>
-          ) : showNotification === "connected" ? (
-            <p>Wallet connected</p>
-          ) : showNotification === WALLET_STATE.CONNECTING ? (
-            <p>Connecting wallet...</p>
-          ) : showNotification === WALLET_STATE.GETTING_ASSETS ? (
-            <p>Getting assets in your wallet...</p>
-          ) : showNotificationMessage !== false ? (
-            <p>{showNotificationMessage}</p>
-          ) : (
-            <></>
-          )}
-        </div>
-      ) : (
-        <></>
-      )} */}
+      )}
+      {/* {
+        <Link
+          onClick={() => {
+            //setShow(!show);
+          }}
+          to="/connectwallet"
+          className="block px-5 mt-4 lg:inline-block lg:mt-0 mb-4 lg:mb-0"
+        >
+          <img
+            src={require("../../images/Navbar/wallet.png")}
+            alt="wallet"
+            className="max-w-[1.7rem]"
+          />
+        </Link>
+      } */}
     </>
   );
 };
