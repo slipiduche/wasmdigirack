@@ -33,6 +33,7 @@ import {
   NotificationContainer,
   NotificationManager,
 } from "react-notifications";
+import WalletAssets from "./layouts/WalletAssets/WalletAssets";
 
 function App() {
   const dispatch = useDispatch();
@@ -64,6 +65,7 @@ function App() {
           <Route exact path="/helpcenter" element={<HelpCenter />} />
           <Route exact path="/platformstats" element={<PlatformStats />} />
           <Route exact path="/connectwallet" element={<ConnectWallet />} />
+          <Route exact path="/walletAssets" element={<WalletAssets />} />
           <Route path="/collection/:id" element={<CollectionItem />} />
           <Route
             path="/collections/*"

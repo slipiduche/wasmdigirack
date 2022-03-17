@@ -101,11 +101,12 @@ export const loadAssets = (wallet, callback) => async (dispatch) => {
     dispatch(setWalletLoading(WALLET_STATE.GETTING_ASSETS));
 
     const walletAssets = await getWalletAssets();
-
+    //console.log(walletAssets)
     const assets = (await getAssets(walletAssets)).reduce((map, asset) => {
       map[asset.details.asset] = asset;
       return map;
     }, {});
+    console.log(assets)
 
     dispatch(
       setWalletData({
@@ -544,7 +545,7 @@ const getWalletAddress = async (usedAddresses) => {
 export const getWalletAssets = async () => {
   await Wallet.getAvailableWallets()
   const utxos = await Wallet.getUtxos();
-  //console.log(utxos);
+  // console.log(utxos);
   const nativeAssets = utxos
     .map((utxo) => serializeTxUnspentOutput(utxo).output())
     .filter((txOut) => txOut.amount().multiasset() !== undefined)
@@ -554,7 +555,7 @@ export const getWalletAssets = async () => {
         .filter((asset) => asset.unit !== "lovelace")
         .map((asset) => asset.unit)
     );
-
+  //console.log(nativeAssets) 
   return [...new Set(nativeAssets)];
 };
 

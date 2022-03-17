@@ -108,14 +108,17 @@ const ButtonWallet = ({
       console.log(state_wallet);
       NotificationManager.success(`${"connected"}`);
 
-      loadAssets(state_wallet, (res) => {});
+      loadAssets(state_wallet, (res) => {
+        if (res.success) {
+          console.log(state_wallet);
+        }
+      });
+    }
+    if (state_wallet.data.assets) {
+      console.log(state_wallet)
+      console.log(state_wallet.data.assets);
     }
   }, [loadAssets, state_wallet]);
-
-  function clear_notification() {
-    setShowNotification(false);
-    setShowNotificationMessage(false);
-  }
 
   return (
     <>
@@ -128,7 +131,7 @@ const ButtonWallet = ({
 
               onclick_connect_wallet();
             } else {
-              // console.log("...connected");
+              navigate('/WalletAssets')
             }
           }}
           className="block px-5 mt-4 lg:inline-block lg:mt-0 mb-4 lg:mb-0"
