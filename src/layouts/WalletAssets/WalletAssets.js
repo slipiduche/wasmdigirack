@@ -7,12 +7,12 @@ import {
   connectWallet,
   loadAssets,
 } from "../../store/wallet/api";
-import AssetCard from "../../components/AssetCard/AssetCard";
 import "./WalletAssets.css";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+import WalletAssetCard from "../../components/WalletAssetCard/WalletAssetCard";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -101,7 +101,7 @@ const WalletAssets = ({
             console.log(imageUrl);
             return (
               <Grid item xs={4}>
-                <AssetCard
+                <WalletAssetCard
                   href="/"
                   collection={"Trx hdxsx"}
                   title="Arstro boy"
@@ -110,6 +110,7 @@ const WalletAssets = ({
                   lastprice="120"
                   likes="120"
                   image={imageUrl}
+                  width={330}
                 />
               </Grid>
             );
