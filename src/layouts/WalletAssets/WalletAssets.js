@@ -47,9 +47,9 @@ const WalletAssets = ({
 
   return (
     <div className="bg-white">
-      <div className="h-[35vh] wallet_asset_container"></div>
+      {/* <div className="h-[35vh] wallet_asset_container"></div> */}
       <div className="lg:container mx-auto px-4">
-        <div className="flex justify-center w-full">
+        {/* <div className="flex justify-center w-full">
           <div className="w-full max-w-[120px] sm:max-w-[150px] lg:max-w-[200px] 2xl:max-w-[302px] relative -top-[60px] md:-top-[75px] lg:-top-[100px] 2xl:-top-[151px] -mb-[60px] md:-mb-[75px] lg:-mb-[100px] 2xl:-mb-[151px]">
             <img
               src={require("../../images/WalletAssets/profileimage.png")}
@@ -57,7 +57,7 @@ const WalletAssets = ({
               className="w-full h-full object-cover rounded-full"
             />
           </div>
-        </div>
+        </div> */}
 
         <div className="flex flex-col items-center w-full mt-4">
           <h1 className="text-center font-bold text-xl sm:text-2xl lg:text-3xl max-w-[27ch] mb-4">
@@ -87,36 +87,30 @@ const WalletAssets = ({
               alt={item.title}
               loading="lazy"
             /> */}
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2}>
-          {walletAssets.map((asset, i) => {
-            //console.log(asset.details.onchainMetadata.image);
+      <div className="py-8 border-t-2 border-gray-400 mt-8">
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid container spacing={2}>
+            {walletAssets.map((asset, i) => {
+              //console.log(asset.details.onchainMetadata.image);
+              const assetMetadata = asset.details.onchainMetadata;
 
-            const imageUrl =
-              asset.details.onchainMetadata.image != null
-                ? `https://infura-ipfs.io/ipfs/${asset.details.onchainMetadata.image.slice(
-                    7
-                  )}`
-                : require("../../images/WalletAssets/assetcard3.png");
-            console.log(imageUrl);
-            return (
-              <Grid item xs={4}>
-                <WalletAssetCard
-                  href="/"
-                  collection={"Trx hdxsx"}
-                  title="Arstro boy"
-                  text="uyv"
-                  price="900"
-                  lastprice="120"
-                  likes="120"
-                  image={imageUrl}
-                  width={330}
-                />
-              </Grid>
-            );
-          })}
-        </Grid>
-      </Box>
+              // const imageUrl =
+              //   assetMetadata.image != null
+              //     ? `https://infura-ipfs.io/ipfs/${asset.details.onchainMetadata.image.slice(
+              //         7
+              //       )}`
+              //     : require("../../images/WalletAssets/assetcard3.png");
+              // const assetName = assetMetadata.name;
+              // console.log(imageUrl);
+              return (
+                <Grid item xs={4}>
+                  <WalletAssetCard asset={assetMetadata} width={330} />
+                </Grid>
+              );
+            })}
+          </Grid>
+        </Box>
+      </div>
     </div>
   );
 };
