@@ -177,16 +177,20 @@ export const get_listed_assets =
         {}
       );
       console.log(listed);
-      const index = 0;
-      const asset = listed[index]["amount"]["1"]["unit"];
-      console.log(asset);
-      const assetDetails = await getAssetDetails(asset);
-      console.log(assetDetails);
-      const txhash0 = listed[index]["tx_hash"];
-      console.log("txmetadata:");
-      const txmetadata = await getTxMetadata(txhash0);
-      console.log(txmetadata);
-      const datumHash = listed[index]["data_hash"];
+      const listedLength = listed.length > 100 ? 100 : listed.length;
+      console.log(listedLength);
+      for (let index = 0; index < listedLength; index++) {
+        const asset = listed[index]["amount"]["1"]["unit"];
+        console.log(asset);
+        const assetDetails = await getAssetDetails(asset);
+        console.log(assetDetails);
+        const txhash0 = listed[index]["tx_hash"];
+        console.log("txmetadata:");
+        const txmetadata = await getTxMetadata(txhash0);
+        console.log(txmetadata);
+        const datumHash = listed[index]["data_hash"];
+      }
+
       let listed_assets = await getLockedAssets(count, lastVisible);
 
       if (listed_assets) {
