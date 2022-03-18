@@ -104,7 +104,12 @@ const WalletAssets = ({
               // console.log(imageUrl);
               return (
                 <Grid item xs={4}>
-                  <WalletAssetCard asset={assetMetadata} width={330} />
+                  <WalletAssetCard
+                    state_wallet={state_wallet}
+                    asset={asset}
+                    assetM={assetMetadata}
+                    width={330}
+                  />
                 </Grid>
               );
             })}
@@ -133,4 +138,3 @@ function mapDispatchToProps(dispatch) {
 export default compose(connect(mapStateToProps, mapDispatchToProps))(
   WalletAssets
 );
-

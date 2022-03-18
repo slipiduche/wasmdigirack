@@ -10,20 +10,26 @@ import SellButton from "../SellButton/SellButton";
 import { FadeImg } from "../Fades";
 import { COLUMN_LAYOUT } from "@blueprintjs/icons/lib/esm/generated/iconContents";
 import { Box, Grid } from "@mui/material";
+import { listToken } from "../../store/wallet/api";
+import { useSelector, useDispatch } from "react-redux";
 
-const SellDialog = ({ asset }) => {
+const SellDialog = ({ state_wallet,asset,assetM }) => {
   //console.log(asset);
   // const imageUrls =
   //   asset.image != null
   //     ? `https://infura-ipfs.io/ipfs/${asset.image.slice(7)}`
   //     : require("../../images/WalletAssets/assetcard3.png");
+  const dispatch = useDispatch();
+  const list_token = (wallet, asset, price, callback) => {
+    dispatch(listToken(wallet, asset, price, callback));
+  };
   const [open, setOpen] = useState(false);
   const [imageUrl, setImageUrl] = useState(
     "https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png"
   );
   const [assetSelected, setAsset] = useState({});
   const handleClickOpen = () => {
-    setAsset(asset);
+    setAsset(assetM);
     console.log(assetSelected);
     console.log(assetSelected.name);
     setOpen(true);
@@ -50,7 +56,7 @@ const SellDialog = ({ asset }) => {
         <DialogTitle>Sell</DialogTitle>
         <DialogContent>
           <DialogContentText>
-          Are you sure you want to sell this asset?.
+            Are you sure you want to sell this asset?.
           </DialogContentText>
 
           <Box sx={{ flexGrow: 1 }}>

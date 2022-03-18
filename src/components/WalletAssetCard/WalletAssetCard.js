@@ -4,10 +4,10 @@ import PurpleButton from "../PurpleButton/PurpleButton";
 import SellButton from "../SellButton/SellButton";
 import SellDialog from "../SellDialog/SellDialog";
 
-const WalletAssetCard = ({ asset, width }) => {
+const WalletAssetCard = ({ state_wallet, asset, assetM, width }) => {
   const imageUrl =
-    asset.image != null
-      ? `https://infura-ipfs.io/ipfs/${asset.image.slice(7)}`
+    assetM.image != null
+      ? `https://infura-ipfs.io/ipfs/${assetM.image.slice(7)}`
       : require("../../images/WalletAssets/assetcard3.png");
   return (
     <div className="flex flex-col max-w-[412px] items-center rounded-[30px] border-[3px] border-gray-300">
@@ -20,10 +20,11 @@ const WalletAssetCard = ({ asset, width }) => {
       <div className="p-4 flex w-full justify-between">
         <div className="flex flex-col">
           <p className="text-base lg:text-lg font-semibold mb-4">
-            collection: {asset.collection ? asset.collection : "no collection"}
+            collection:{" "}
+            {assetM.collection ? assetM.collection : "no collection"}
           </p>
           <p className="text-base lg:text-lg font-semibold mb-4">
-            asset name: {asset.name}
+            asset name: {assetM.name}
           </p>
           {/* <p className="text-base lg:text-lg font-semibold mb-4">hola</p> */}
         </div>
@@ -37,7 +38,11 @@ const WalletAssetCard = ({ asset, width }) => {
                     </div>
                 </div> */}
 
-        <SellDialog asset={asset} />
+        <SellDialog
+          state_wallet={state_wallet}
+          asset={asset}
+          assetassetM={assetM}
+        />
       </div>
     </div>
   );
