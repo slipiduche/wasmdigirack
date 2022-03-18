@@ -41,7 +41,7 @@ const WalletAssetCard = ({ state_wallet, asset, assetM, width }) => {
         <SellDialog
           state_wallet={state_wallet}
           asset={asset}
-          assetassetM={assetM}
+          assetM={assetM}
         />
       </div>
     </div>

@@ -13,7 +13,7 @@ import { Box, Grid } from "@mui/material";
 import { listToken } from "../../store/wallet/api";
 import { useSelector, useDispatch } from "react-redux";
 
-const SellDialog = ({ state_wallet,asset,assetM }) => {
+const SellDialog = ({ state_wallet, asset, assetM }) => {
   //console.log(asset);
   // const imageUrls =
   //   asset.image != null
@@ -23,7 +23,15 @@ const SellDialog = ({ state_wallet,asset,assetM }) => {
   const list_token = (wallet, asset, price, callback) => {
     dispatch(listToken(wallet, asset, price, callback));
   };
+  function list_this_token(price) {
+    setOpen(false);
+    list_token(state_wallet, asset, price, (res) => {
+      //successful_transaction(res);
+      console.log(res);
+    });
+  }
   const [open, setOpen] = useState(false);
+  const [price, setPrice] = useState(10);
   const [imageUrl, setImageUrl] = useState(
     "https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png"
   );
@@ -38,6 +46,10 @@ const SellDialog = ({ state_wallet,asset,assetM }) => {
   const handleClose = () => {
     setOpen(false);
   };
+  const onPriceChange = (event) => {
+    setPrice(event.target.value);
+  };
+
   useEffect(() => {
     //console.log(assetSelected);
     if (assetSelected.image != null) {
@@ -98,6 +110,7 @@ const SellDialog = ({ state_wallet,asset,assetM }) => {
                   type="number"
                   fullWidth
                   variant="standard"
+                  onChange={onPriceChange}
                 />
               </Grid>
             </Grid>
@@ -105,7 +118,13 @@ const SellDialog = ({ state_wallet,asset,assetM }) => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Confirm</Button>
+          <Button
+            onClick={() => {
+              list_this_token(price);
+            }}
+          >
+            Confirm
+          </Button>
         </DialogActions>
       </Dialog>
     </div>

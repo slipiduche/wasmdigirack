@@ -106,7 +106,7 @@ export const loadAssets = (wallet, callback) => async (dispatch) => {
       map[asset.details.asset] = asset;
       return map;
     }, {});
-    console.log(assets)
+    console.log(assets);
 
     dispatch(
       setWalletData({
@@ -136,12 +136,22 @@ export const listToken =
     try {
       dispatch(setWalletLoading(WALLET_STATE.AWAITING_SIGNATURE));
 
-      const collectionDetails = await getCollection(asset.details.policyId);
+      const collectionDetails = asset.details.onchainMetadata;
+
       const walletUtxos = await Wallet.getUtxos();
 
-      const royaltiesAddress =
-        collectionDetails?.royalties?.address ?? wallet.data.address;
-      const royaltiesPercentage = collectionDetails?.royalties?.percentage ?? 0;
+      const royaltiesAddress = collectionDetails?.royaltiesWallet1
+        ? collectionDetails.royaltiesWallet2
+          ? collectionDetails.royaltiesWallet1 +
+            collectionDetails.royaltiesWallet2
+          : wallet.data.address
+        : wallet.data.address;
+      // console.log(royaltiesAddress);
+      const royaltiesPercentage = collectionDetails?.royaltiesWallet1
+        ? collectionDetails?.royaltiesWallet2
+          ? 1
+          : 0
+        : 0;
 
       const datum = createDatum(
         asset.details.assetName,
@@ -151,16 +161,19 @@ export const listToken =
         royaltiesPercentage,
         price
       );
+      // console.log(datum)
 
       const contractVersion = process.env.REACT_APP_MARTIFY_CONTRACT_VERSION;
-
+      console.log(contractVersion);
       const listObj = await listAsset(
         datum,
         {
           address: fromBech32(wallet.data.address),
           utxos: walletUtxos,
         },
-        contractVersion
+        contractVersion,
+        wallet.data.address,
+        royaltiesAddress
       );
 
       if (listObj && listObj.datumHash && listObj.txHash) {
@@ -543,7 +556,7 @@ const getWalletAddress = async (usedAddresses) => {
 };
 
 export const getWalletAssets = async () => {
-  await Wallet.getAvailableWallets()
+  await Wallet.getAvailableWallets();
   const utxos = await Wallet.getUtxos();
   // console.log(utxos);
   const nativeAssets = utxos
@@ -555,7 +568,7 @@ export const getWalletAssets = async () => {
         .filter((asset) => asset.unit !== "lovelace")
         .map((asset) => asset.unit)
     );
-  //console.log(nativeAssets) 
+  //console.log(nativeAssets)
   return [...new Set(nativeAssets)];
 };
 
