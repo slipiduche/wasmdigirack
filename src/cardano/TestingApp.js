@@ -620,9 +620,9 @@ export default class Dapp extends React.Component {
           const tokenForSale = saleDetails.tn;
           // console.log(saleDetails);
           // console.log(tokenForSale);
-          const datumSale = serializeSale(saleDetails);
-          //console.log(datumSale);
-          const verifyDetails = deserializeSale(datumSale);
+          // const datumSale = serializeSale(saleDetails);
+          // //console.log(datumSale);
+          // const verifyDetails = deserializeSale(datumSale);
           // console.log(verifyDetails);
           // console.log(assetDetails["policyId"]);
           // console.log(assetDetails["assetName"]);

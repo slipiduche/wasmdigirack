@@ -21,9 +21,17 @@ const Explore = () => {
 
   useEffect(() => {
     if (firstTime == 0) {
-      console.log("firstload");
+      //console.log("firstload");
       firstTime = 1;
     }
+    // if (state_wallet.data) {
+    //   console.log(state_wallet.data)
+
+    // }
+    // if (state_collection) {
+    //   console.log(state_collection)
+
+    // }
 
     if (!isFetching && listings.length === 0) {
       loadNext();
@@ -36,6 +44,7 @@ const Explore = () => {
       dispatch(
         get_listed_assets(ITEMS_PER_PAGE, lastVisible, (res) => {
           if (res.data) {
+            console.log(res.data);
             setListings([...listings, ...res.data]);
             setFilteredListings([...filteredListings, ...res.data]);
             sethasMore(res.data.length > 0);
@@ -89,29 +98,7 @@ const Explore = () => {
           />
         </div>
         <div className="column">
-          <InfiniteScroll
-            className="infinite-scroll-container"
-            dataLength={listings.length}
-            next={loadNext}
-            hasMore={hasMore}
-            loader={
-              <progress
-                className="progress is-small is-primary"
-                max="100"
-              ></progress>
-            }
-            endMessage={
-              <div style={{ textAlign: "center" }}>
-                <span className="icon has-text-info">
-                  <i className="fas fa-info-circle"></i>
-                </span>
-                <b>Yay! You have seen it all</b>
-              </div>
-            }
-            scrollableTarget="body"
-          >
-            <ListingSection listings={filteredListings} />
-          </InfiniteScroll>
+          <ListingSection listings={filteredListings} />
         </div>
       </div>
     </div>

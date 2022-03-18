@@ -28,13 +28,14 @@ import { useDispatch, useSelector } from "react-redux";
 import SweetAlert from "react-bootstrap-sweetalert";
 import Cardano from "./cardano/serialization-lib/index";
 import Dapp from "./cardano/TestingApp";
-import 'react-notifications/lib/notifications.css';
+import "react-notifications/lib/notifications.css";
 import {
   NotificationContainer,
   NotificationManager,
 } from "react-notifications";
 import WalletAssets from "./layouts/WalletAssets/WalletAssets";
 import Explore from "./layouts/Explore";
+import Asset from "./layouts/Asset";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,7 +55,7 @@ function App() {
     <div className="ff_poppins">
       <Router>
         <Navbar />
-        <NotificationContainer/>
+        <NotificationContainer />
         <ScrollToTop />
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -67,6 +68,11 @@ function App() {
           <Route exact path="/platformstats" element={<PlatformStats />} />
           <Route exact path="/connectwallet" element={<ConnectWallet />} />
           <Route exact path="/walletAssets" element={<WalletAssets />} />
+          <Route
+            exact
+            path="/assets/:policy_id/:asset_id"
+            element={<Asset />}
+          ></Route>
           <Route path="/collection/:id" element={<CollectionItem />} />
           <Route
             path="/collections/*"
