@@ -5,7 +5,7 @@ import {
   collections_add_assets,
 } from "./collectionActions";
 import { set_error } from "../error/errorActions";
-import { resolveError } from "utils/resolver";
+import { resolveError } from "../../utils/resolver";
 
 import data_collections from "../../data/collections.json";
 import data_collections_cnft from "../../data/collections-cnft.json";

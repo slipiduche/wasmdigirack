@@ -26,11 +26,16 @@ const WalletAssets = ({
   availableWallets,
   connectWallet,
   loadAssets,
+  state_collection
 }) => {
   const dispatch = useDispatch;
   const [walletAddress, setWalletAddress] = useState("");
   const [walletAssets, setWalletAssets] = useState([]);
   useEffect(() => {
+    if (state_collection) {
+      console.log(state_collection);
+    }
+
     if (state_wallet.data.assets) {
       let validAssets = [];
       for (const key in state_wallet.data.assets) {
@@ -43,7 +48,7 @@ const WalletAssets = ({
     if (state_wallet.data.address) {
       setWalletAddress(state_wallet.data.address);
     }
-  }, [loadAssets, state_wallet]);
+  }, [loadAssets, state_wallet,state_collection]);
 
   return (
     <div className="bg-white">
@@ -123,6 +128,7 @@ const WalletAssets = ({
 function mapStateToProps(state, props) {
   return {
     state_wallet: state.wallet,
+    state_collection: state.collection,
   };
 }
 
