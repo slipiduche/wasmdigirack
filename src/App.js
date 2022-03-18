@@ -34,6 +34,7 @@ import {
   NotificationManager,
 } from "react-notifications";
 import WalletAssets from "./layouts/WalletAssets/WalletAssets";
+import Explore from "./layouts/Explore";
 
 function App() {
   const dispatch = useDispatch();
@@ -83,7 +84,7 @@ function App() {
                 <Route path={`/sports`} element={<SportsCollection />} />
                 <Route path={`/tradingcards`} element={<TradingCards />} />
                 <Route path={`/utility`} element={<UtilityCollection />} />
-                <Route path={`/all`} element={<AllCollections />} />
+                <Route path={`/all`} element={<Explore />} />
               </Routes>
             }
           />

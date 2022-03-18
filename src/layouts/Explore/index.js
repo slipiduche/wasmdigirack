@@ -3,12 +3,13 @@ import { useDispatch } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import { get_listed_assets } from "../../store/collection/api";
-import { ListingDisplayListing } from "../../components/ListingDisplayListing";
+import ListingDisplayListing from "../../components/ListingDisplayListing";
 
 import "bulma-checkradio/dist/css/bulma-checkradio.min.css";
 import "./style.css";
 
 const Explore = () => {
+  let firstTime = 0;
   const ITEMS_PER_PAGE = 48;
   const dispatch = useDispatch();
   const [isFetching, setIsFetching] = useState(false);
@@ -19,6 +20,11 @@ const Explore = () => {
   const [hasMore, sethasMore] = useState(true);
 
   useEffect(() => {
+    if (firstTime == 0) {
+      console.log("firstload");
+      firstTime = 1;
+    }
+
     if (!isFetching && listings.length === 0) {
       loadNext();
     }

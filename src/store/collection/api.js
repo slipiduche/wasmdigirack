@@ -17,6 +17,12 @@ import {
   getCollectionAssets,
   getLockedAssets,
 } from "../../database/assets";
+import {
+  getLockedUtxos,
+  getAssetDetails,
+  getTxMetadata,
+  getLockedUtxosByAsset,
+} from "../../cardano/blockfrost-api";
 
 export const load_collection = (callback) => async (dispatch) => {
   let all_collections = {};
@@ -166,6 +172,21 @@ export const get_asset = (asset_id, callback) => async (dispatch) => {
 export const get_listed_assets =
   (count, lastVisible, callback) => async (dispatch) => {
     try {
+      const listed = await getLockedUtxos(
+        "addr_test1wqh7jekjmqcup4vwfaccs30rs6v7klczs3kkxzeypxf3v0cl5luuz",
+        {}
+      );
+      console.log(listed);
+      const index = 0;
+      const asset = listed[index]["amount"]["1"]["unit"];
+      console.log(asset);
+      const assetDetails = await getAssetDetails(asset);
+      console.log(assetDetails);
+      const txhash0 = listed[index]["tx_hash"];
+      console.log("txmetadata:");
+      const txmetadata = await getTxMetadata(txhash0);
+      console.log(txmetadata);
+      const datumHash = listed[index]["data_hash"];
       let listed_assets = await getLockedAssets(count, lastVisible);
 
       if (listed_assets) {
