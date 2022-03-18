@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import {
   walletConnected,
@@ -51,6 +51,7 @@ const ButtonWallet = ({
   const [showNotification, setShowNotification] = useState(false);
   const [showNotificationMessage, setShowNotificationMessage] = useState(false);
   const [showWallets, setShowWallets] = useState(false);
+  const location = useLocation();
 
   function onclick_connect_wallet() {
     availableWallets((res) => {
@@ -111,12 +112,17 @@ const ButtonWallet = ({
       loadAssets(state_wallet, (res) => {
         if (res.success) {
           console.log(state_wallet);
+
+          if (state_wallet.data.assets) {
+            console.log(state_wallet);
+            console.log(state_wallet.data.assets);
+            if (state_wallet.data.assets != {} && state_wallet.connected) {
+              if (location.pathname != "/WalletAssets")
+                navigate("/WalletAssets");
+            }
+          }
         }
       });
-    }
-    if (state_wallet.data.assets) {
-      console.log(state_wallet)
-      console.log(state_wallet.data.assets);
     }
   }, [loadAssets, state_wallet]);
 
@@ -131,7 +137,7 @@ const ButtonWallet = ({
 
               onclick_connect_wallet();
             } else {
-              navigate('/WalletAssets')
+              navigate("/WalletAssets");
             }
           }}
           className="block px-5 mt-4 lg:inline-block lg:mt-0 mb-4 lg:mb-0"
