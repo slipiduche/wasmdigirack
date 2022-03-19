@@ -36,6 +36,7 @@ import {
 import WalletAssets from "./layouts/WalletAssets/WalletAssets";
 import Explore from "./layouts/Explore";
 import Asset from "./layouts/Asset";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function App() {
   const dispatch = useDispatch();
