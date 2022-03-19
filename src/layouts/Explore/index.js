@@ -13,7 +13,6 @@ import "./style.css";
 // import "./bulmaCustom.css";
 // import "./bulmacustom1.css";
 
-
 const Explore = () => {
   let firstTime = 0;
   const ITEMS_PER_PAGE = 48;
@@ -94,17 +93,20 @@ const Explore = () => {
   };
 
   return (
-    <div className="section explore">
-      <div className="columns">
-        <div className="column is-one-quarter-tablet one-fifth-desktop is-one-fifth-widescreen is-one-fifth-fullhd">
-          <Filter
-            collections={collections}
-            listings={listings}
-            setFilteredListings={setFilteredListings}
-          />
-        </div>
-        <div className="column">
-          <ListingSection listings={filteredListings} />
+    <div className="bg-white">
+      <div className="h-[1vh] wallet_assets_container"></div>
+      <div className="section explore">
+        <div className="columns">
+          <div className="column is-one-quarter-tablet one-fifth-desktop is-one-fifth-widescreen is-one-fifth-fullhd">
+            <Filter
+              collections={collections}
+              listings={listings}
+              setFilteredListings={setFilteredListings}
+            />
+          </div>
+          <div className="column">
+            <ListingSection listings={filteredListings} />
+          </div>
         </div>
       </div>
     </div>
