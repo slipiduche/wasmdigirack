@@ -6,8 +6,12 @@ import { get_listed_assets } from "../../store/collection/api";
 import ListingDisplayListing from "../../components/ListingDisplayListing";
 
 import "bulma-checkradio/dist/css/bulma-checkradio.min.css";
+//import "bulma/css/bulma.min.css";
+//import "./bulma.min.css";
+import "./css/bulma.css";
 import "./style.css";
-import "./bulma.min.css";
+//import "./bulmaCustom.css";
+
 
 const Explore = () => {
   let firstTime = 0;
