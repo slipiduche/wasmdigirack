@@ -196,7 +196,7 @@ const SocialLinks = ({ asset }) => {
       <p className="control">
         <a
           className="button is-small social-icon"
-          href={`https://twitter.com/share?url=${urls.root}assets/${asset.details.policyId}/${asset.details.asset}`}
+          href={"https://twitter.com/"} //share?url=${urls.root}assets/${asset.details.policyId}/${asset.details.asset}`}
           rel="noreferrer"
           target="_blank"
           data-tooltip="Share on Twitter"
@@ -209,7 +209,7 @@ const SocialLinks = ({ asset }) => {
       <p className="control">
         <a
           className="button is-small social-icon"
-          href={`https://www.facebook.com/sharer/sharer.php?u=${urls.root}assets/${asset.details.policyId}/${asset.details.asset}`}
+          href={"https://www.facebook.com/"} //sharer/sharer.php?u=${urls.root}assets/${asset.details.policyId}/${asset.details.asset}`}
           rel="noreferrer"
           target="_blank"
           data-tooltip="Share on Facebook"
