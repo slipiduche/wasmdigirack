@@ -7,6 +7,7 @@ import ListingDisplayListing from "../../components/ListingDisplayListing";
 
 import "bulma-checkradio/dist/css/bulma-checkradio.min.css";
 import "./style.css";
+import "./bulma.min.css";
 
 const Explore = () => {
   let firstTime = 0;
