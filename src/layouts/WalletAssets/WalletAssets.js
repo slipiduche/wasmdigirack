@@ -52,7 +52,7 @@ const WalletAssets = ({
 
   return (
     <div className="bg-white">
-      {/* <div className="h-[35vh] wallet_asset_container"></div> */}
+      <div className="h-[1vh] wallet_asset_container"></div>
       <div className="lg:container mx-auto px-4">
         {/* <div className="flex justify-center w-full">
           <div className="w-full max-w-[120px] sm:max-w-[150px] lg:max-w-[200px] 2xl:max-w-[302px] relative -top-[60px] md:-top-[75px] lg:-top-[100px] 2xl:-top-[151px] -mb-[60px] md:-mb-[75px] lg:-mb-[100px] 2xl:-mb-[151px]">
