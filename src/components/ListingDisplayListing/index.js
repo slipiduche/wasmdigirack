@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AssetCard from "../AssetCardM";
-import "../../layouts/Explore/bulmacustom1.css"
+//import "../../layouts/Explore/bulmacustom1.css"
 
 const ListingDisplayListing = ({ listings }) => {
   // search and filter

@@ -11,7 +11,7 @@ import "bulma-checkradio/dist/css/bulma-checkradio.min.css";
 //import "./css/bulma.css";
 import "./style.css";
 // import "./bulmaCustom.css";
-import "./bulmacustom1.css";
+import "./bulma.css";
 
 const Explore = () => {
   let firstTime = 0;
