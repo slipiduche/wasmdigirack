@@ -194,11 +194,11 @@ export const purchaseAsset = async (
       },
       outputs
     );
-    console.log(outputs.get(0).amount().coin().to_str());
-    console.log(outputs.get(1).amount().coin().to_str());
-    console.log(outputs.get(2).amount().coin().to_str());
-    console.log(outputs.get(3).amount().coin().to_str());
-    console.log(outputs.get(3).address().to_bech32());
+    // console.log(outputs.get(0).amount().coin().to_str());
+    // console.log(outputs.get(1).amount().coin().to_str());
+    // console.log(outputs.get(2).amount().coin().to_str());
+    // console.log(outputs.get(3).amount().coin().to_str());
+    // console.log(outputs.get(3).address().to_bech32());
 
 
     const requiredSigners = Cardano.Instance.Ed25519KeyHashes.new();
