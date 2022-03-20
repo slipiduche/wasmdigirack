@@ -47,7 +47,7 @@ const Explore = () => {
       dispatch(
         get_listed_assets(ITEMS_PER_PAGE, lastVisible, (res) => {
           if (res.data) {
-            console.log(res.data);
+            //console.log(res.data);
             setListings([...listings, ...res.data]);
             setFilteredListings([...filteredListings, ...res.data]);
             sethasMore(res.data.length > 0);

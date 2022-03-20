@@ -17,7 +17,7 @@ const ConnectWallet = () => {
             <a
               href="https://namiwallet.io/"
               onClick={() => {
-                console.log("connecting....Nami");
+                //console.log("connecting....Nami");
               }}
             >
               <div className="flex items-center w-full">

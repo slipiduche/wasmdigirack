@@ -55,7 +55,7 @@ const ButtonWallet = ({
 
   function onclick_connect_wallet() {
     availableWallets((res) => {
-      console.log(res);
+      //console.log(res);
       if (res.wallets.length === 0) {
         setShowNotification("no-wallet");
         dispatch(setWalletLoading(WALLET_STATE.NO_WALLETS));
@@ -93,7 +93,7 @@ const ButtonWallet = ({
       )
         NotificationManager.info(`${state_wallet.loading}`);
 
-      console.log(state_wallet.loading);
+      //console.log(state_wallet.loading);
       if (state_wallet.loading == "NO_WALLETS") {
         navigate("/connectwallet");
       }
@@ -106,16 +106,16 @@ const ButtonWallet = ({
       !state_wallet.loading &&
       !state_wallet.loaded_assets
     ) {
-      console.log(state_wallet);
+      //console.log(state_wallet);
       NotificationManager.success(`${"connected"}`);
 
       loadAssets(state_wallet, (res) => {
         if (res.success) {
-          console.log(state_wallet);
+          //console.log(state_wallet);
 
           if (state_wallet.data.assets) {
-            console.log(state_wallet);
-            console.log(state_wallet.data.assets);
+            //console.log(state_wallet);
+            //console.log(state_wallet.data.assets);
             if (state_wallet.data.assets != {} && state_wallet.connected) {
               if (location.pathname != "/WalletAssets")
                 navigate("/WalletAssets");

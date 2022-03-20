@@ -36,15 +36,15 @@ class Wallet {
     let CollatUtxos = []
 
     const hexCollateral = await this._provider.experimental.getCollateral();
-    console.log(hexCollateral);
+    //console.log(hexCollateral);
 
     for (const x of hexCollateral) {
       const utxo = Cardano.Instance.TransactionUnspentOutput.from_bytes(Buffer.from(x, "hex"));
       CollatUtxos.push(utxo)
       // console.log(utxo)
     }
-    console.log(CollatUtxos);
-    console.log('-----utxos-----');
+    //console.log(CollatUtxos);
+    //console.log('-----utxos-----');
 
     //const collateral = hexCollateral.map((utxo) => Cardano.TransactionUnspentOutput.from_bytes(fromHex(utxo)));
     return CollatUtxos;
