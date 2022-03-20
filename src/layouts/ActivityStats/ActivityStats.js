@@ -25,7 +25,7 @@ const ActivityStats = () => {
                     <div className='flex justify-between max-w-[110px] w-full text-lg px-5 py-3 rounded-lg' style={{background: "#759BD3"}}>
                         <p>Sales</p>
                         <button>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
                             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                             </svg>
                         </button>
@@ -59,7 +59,7 @@ const ActivityStats = () => {
                             <div className="hidden lg:grid lg:grid-cols-custom2 gap-x-2 md:gap-x-4 border-b-[1px] border-slate-500 py-6 px-3 collection_card_anim"> 
                                 <div className="flex justify-between items-center w-full justify-self-center self-center">
                                     <p className='hidden sm:flex text-xs sm:text-sm md:text-base lg:text-lg leading-36px justify-self-center self-center text-center mr-2 md:mr-4  flex items-center'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart mr-2" viewBox="0 0 16 16">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-cart mr-2" viewBox="0 0 16 16">
                                             <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                                         </svg>
                                         <span>Sale</span>

@@ -711,7 +711,7 @@ export default class Dapp extends React.Component {
             <Radio label="Flint" value="flint" />
           </RadioGroup>
         </div>
-        <button class="text-white mt-[20px] px-24 py-6 text-[30px] px-10 py-5 blue_button text-xl font-bold" onClick={this.refreshData}>
+        <button className="text-white mt-[20px] px-24 py-6 text-[30px] px-10 py-5 blue_button text-xl font-bold" onClick={this.refreshData}>
           Refresh
         </button>
 
@@ -786,7 +786,7 @@ export default class Dapp extends React.Component {
               <div style={{ marginLeft: "20px" }}>
                 <button
                  
-                 class="gray1_button"
+                 className="gray1_button"
                   onClick={async () => {
                     const shelleyChangeAddress =
                       Cardano.Instance.Address.from_bech32(
@@ -881,7 +881,7 @@ export default class Dapp extends React.Component {
 
                 <button
                   style={{ padding: "10px" }}
-                  class="purple_button"
+                  className="purple_button"
                   onClick={async () => {
                     const shelleyChangeAddress =
                       Cardano.Instance.Address.from_bech32(
@@ -975,7 +975,7 @@ export default class Dapp extends React.Component {
                 </p>
 
                 <button
-                 class="purple_button"
+                 className="purple_button"
                   style={{ padding: "10px" }}
                   onClick={async () => {
                     console.log("press");

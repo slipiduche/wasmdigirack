@@ -33,11 +33,11 @@ const SportsCollection = () => {
                     <div className="flex justify-center">
                         {!show ? (
                             <button onClick={()=>setShow(true)}>
-                                <i class="fas fa-chevron-down text-gray-500"></i>
+                                <i className="fas fa-chevron-down text-gray-500"></i>
                             </button>
                         ):(
                             <button onClick={()=>setShow(false)}>
-                                <i class="fas fa-chevron-up text-gray-500"></i>
+                                <i className="fas fa-chevron-up text-gray-500"></i>
                             </button>
                         )}
                         
