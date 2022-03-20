@@ -444,7 +444,7 @@ export const purchaseToken = (wallet, asset, callback) => async (dispatch) => {
     dispatch(setWalletLoading(WALLET_STATE.AWAITING_SIGNATURE));
 
     const walletUtxos = await Wallet.getUtxos();
-    const contractVersion = resolveContractVersion(asset);
+    const contractVersion = 'v3'//resolveContractVersion(asset);
 
     const assetUtxo = (
       await getLockedUtxosByAsset(
