@@ -63,6 +63,7 @@ const Asset = () => {
     dispatch(relistToken(wallet, asset, price, callback));
   };
   const delist_token = (wallet, asset, callback) => {
+    console.log('cancel2')
     dispatch(delistToken(wallet, asset, callback));
   };
   const purchase_token = (wallet, asset, callback) => {
@@ -359,7 +360,7 @@ const PurchaseAsset = ({
         {asset.status ? (
           asset.status.locked ? (
             <div className="tabs is-centered">
-              <ul>
+              {/* <ul>
                 <li
                   className={showTab === "buy" ? "is-active" : ""}
                   onClick={() => setShowTab("buy")}
@@ -372,7 +373,7 @@ const PurchaseAsset = ({
                 >
                   <a>Offer</a>
                 </li>
-              </ul>
+              </ul> */}
             </div>
           ) : (
             <></>
@@ -750,7 +751,7 @@ const OwnerListAsset = ({
         )}
 
         <div className="field has-addons">
-          <div className="control has-icons-left is-expanded">
+          {/* <div className="control has-icons-left is-expanded">
             <input
               className="input"
               type="number"
@@ -773,8 +774,8 @@ const OwnerListAsset = ({
             ) : (
               <></>
             )}
-          </div>
-          <div className="control">
+          </div> */}
+          {/* <div className="control">
             <button
               className={
                 "button is-info " +
@@ -794,7 +795,7 @@ const OwnerListAsset = ({
             >
               {userInputAmount ? `List for ₳${userInputAmount}!` : "List this!"}
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
 
