@@ -33,7 +33,7 @@ const WalletAssets = ({
   const [walletAssets, setWalletAssets] = useState([]);
   useEffect(() => {
     if (state_collection) {
-      console.log(state_collection);
+      //console.log(state_collection);
     }
 
     if (state_wallet.data.assets) {

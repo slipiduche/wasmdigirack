@@ -6,13 +6,10 @@ import { get_listed_assets } from "../../store/collection/api";
 import ListingDisplayListing from "../../components/ListingDisplayListing";
 
 import "bulma-checkradio/dist/css/bulma-checkradio.min.css";
-//import "bulma/css/bulma.min.css";
-//import "./bulma.min.css";
-import "./css/bulma.css";
-import "./style.css";
-// import "./bulmaCustom.css";
-// import "./bulmacustom1.css";
 
+import "./style.css";
+
+import "./bulma.css";
 
 const Explore = () => {
   let firstTime = 0;
@@ -50,7 +47,7 @@ const Explore = () => {
       dispatch(
         get_listed_assets(ITEMS_PER_PAGE, lastVisible, (res) => {
           if (res.data) {
-            console.log(res.data);
+            //console.log(res.data);
             setListings([...listings, ...res.data]);
             setFilteredListings([...filteredListings, ...res.data]);
             sethasMore(res.data.length > 0);
@@ -94,17 +91,20 @@ const Explore = () => {
   };
 
   return (
-    <div className="section explore">
-      <div className="columns">
-        <div className="column is-one-quarter-tablet one-fifth-desktop is-one-fifth-widescreen is-one-fifth-fullhd">
-          <Filter
-            collections={collections}
-            listings={listings}
-            setFilteredListings={setFilteredListings}
-          />
-        </div>
-        <div className="column">
-          <ListingSection listings={filteredListings} />
+    <div className="bg-white">
+      <div className="h-[1vh] wallet_assets_container"></div>
+      <div className="section explore">
+        <div className="columns">
+          <div className="column is-one-quarter-tablet one-fifth-desktop is-one-fifth-widescreen is-one-fifth-fullhd">
+            <Filter
+              collections={collections}
+              listings={listings}
+              setFilteredListings={setFilteredListings}
+            />
+          </div>
+          <div className="column">
+            <ListingSection listings={filteredListings} />
+          </div>
         </div>
       </div>
     </div>

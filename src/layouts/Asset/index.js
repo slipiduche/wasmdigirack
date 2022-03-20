@@ -76,65 +76,71 @@ const Asset = () => {
   };
 
   return (
-    <>
-      {thisCollection && asset ? (
-        <CollectionBanner
-          thisCollection={thisCollection}
-          size="is-small"
-          asset={asset}
-          is_asset_page={true}
-        />
-      ) : (
-        <></>
-      )}
-      {asset ? (
-        <div className="container asset">
-          <section className="section">
-            <div className="columns">
-              <div className="column is-two-fifths">
-                <AssetImage asset={asset} />
-                <Listing
-                  asset={asset}
-                  state_wallet={state_wallet}
-                  list_token={list_token}
-                  relist_token={relist_token}
-                  delist_token={delist_token}
-                  purchase_token={purchase_token}
-                  asset_add_offer={asset_add_offer}
-                />
-              </div>
-
-              <div className="column">
-                <div className="content">
-                  <AssetHeader asset={asset} thisCollection={thisCollection} />
-
-                  <AboutAsset thisCollection={thisCollection} asset={asset} />
-
-                  {thisCollection ? (
-                    <CollectionAbout thisCollection={thisCollection} />
-                  ) : (
-                    <></>
-                  )}
-
-                  <Transactions
+    <div className="bg-white">
+      <div className="h-[1vh] wallet_assets_container"></div>
+      <>
+        {thisCollection && asset ? (
+          <CollectionBanner
+            thisCollection={thisCollection}
+            size="is-small"
+            asset={asset}
+            is_asset_page={true}
+          />
+        ) : (
+          <></>
+        )}
+        {asset ? (
+          <div className="container asset">
+            <section className="section">
+              <div className="columns">
+                <div className="column is-two-fifths">
+                  <AssetImage asset={asset} />
+                  <Listing
                     asset={asset}
-                    opencnft_get_asset_tx={opencnft_get_asset_tx}
+                    state_wallet={state_wallet}
+                    list_token={list_token}
+                    relist_token={relist_token}
+                    delist_token={delist_token}
+                    purchase_token={purchase_token}
+                    asset_add_offer={asset_add_offer}
                   />
+                </div>
 
-                  <AssetRawMetaData asset={asset} />
+                <div className="column">
+                  <div className="content">
+                    <AssetHeader
+                      asset={asset}
+                      thisCollection={thisCollection}
+                    />
+
+                    <AboutAsset thisCollection={thisCollection} asset={asset} />
+
+                    {thisCollection ? (
+                      <CollectionAbout thisCollection={thisCollection} />
+                    ) : (
+                      <></>
+                    )}
+
+                    <Transactions
+                      asset={asset}
+                      opencnft_get_asset_tx={opencnft_get_asset_tx}
+                    />
+
+                    <AssetRawMetaData asset={asset} />
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
-        </div>
-      ) : (
-        <NoAssetFound
-          state_collection={state_collection}
-          policy_id={policy_id}
-          asset_id={asset_id}
-        />
-      )}
-    </>
+            </section>
+          </div>
+        ) : (
+          <NoAssetFound
+            state_collection={state_collection}
+            policy_id={policy_id}
+            asset_id={asset_id}
+          />
+        )}
+      </>
+    </div>
   );
 };
 
@@ -190,7 +196,7 @@ const SocialLinks = ({ asset }) => {
       <p className="control">
         <a
           className="button is-small social-icon"
-          href={`https://twitter.com/share?url=${urls.root}assets/${asset.details.policyId}/${asset.details.asset}`}
+          href={"https://twitter.com/"} //share?url=${urls.root}assets/${asset.details.policyId}/${asset.details.asset}`}
           rel="noreferrer"
           target="_blank"
           data-tooltip="Share on Twitter"
@@ -203,7 +209,7 @@ const SocialLinks = ({ asset }) => {
       <p className="control">
         <a
           className="button is-small social-icon"
-          href={`https://www.facebook.com/sharer/sharer.php?u=${urls.root}assets/${asset.details.policyId}/${asset.details.asset}`}
+          href={"https://www.facebook.com/"} //sharer/sharer.php?u=${urls.root}assets/${asset.details.policyId}/${asset.details.asset}`}
           rel="noreferrer"
           target="_blank"
           data-tooltip="Share on Facebook"

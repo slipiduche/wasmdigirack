@@ -106,7 +106,7 @@ export const loadAssets = (wallet, callback) => async (dispatch) => {
       map[asset.details.asset] = asset;
       return map;
     }, {});
-    console.log(assets);
+    //console.log(assets);
 
     dispatch(
       setWalletData({
@@ -164,7 +164,7 @@ export const listToken =
       // console.log(datum)
 
       const contractVersion = process.env.REACT_APP_MARTIFY_CONTRACT_VERSION;
-      console.log(contractVersion);
+      //console.log(contractVersion);
       const listObj = await listAsset(
         datum,
         {

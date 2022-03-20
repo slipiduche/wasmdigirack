@@ -38,8 +38,8 @@ const SellDialog = ({ state_wallet, asset, assetM }) => {
   const [assetSelected, setAsset] = useState({});
   const handleClickOpen = () => {
     setAsset(assetM);
-    console.log(assetSelected);
-    console.log(assetSelected.name);
+    //console.log(assetSelected);
+    //console.log(assetSelected.name);
     setOpen(true);
   };
 

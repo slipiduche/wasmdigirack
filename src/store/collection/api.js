@@ -189,19 +189,19 @@ export const get_listed_assets =
         "addr_test1wqh7jekjmqcup4vwfaccs30rs6v7klczs3kkxzeypxf3v0cl5luuz",
         {}
       );
-      console.log(listed);
+      //console.log(listed);
       const listedLength = listed.length > 100 ? 100 : listed.length;
-      console.log(listedLength);
+      //console.log(listedLength);
       let listed_assets = [];
       for (let index = 0; index < listedLength; index++) {
         const asset = listed[index]["amount"]["1"]["unit"];
-        console.log(asset);
+        //console.log(asset);
         const assetDetails = await getAssetDetails(asset);
-        console.log(assetDetails);
+        //console.log(assetDetails);
         const txhash0 = listed[index]["tx_hash"];
-        console.log("txmetadata:");
+        //console.log("txmetadata:");
         const txmetadata = await getTxMetadata(txhash0);
-        console.log(txmetadata);
+        //console.log(txmetadata);
         let saleDetails, sellerAddressHex, royaltiesAddressHex;
         for (const key in txmetadata) {
           switch (txmetadata[key].label) {
@@ -219,17 +219,17 @@ export const get_listed_assets =
         }
         const datumHash = listed[index]["data_hash"];
         //saleDetails = txmetadata["0"]["json_metadata"];
-        console.log(saleDetails);
+        //console.log(saleDetails);
         //sellerAddressHex = txmetadata["1"]["json_metadata"];
-        console.log(sellerAddressHex);
-        console.log(royaltiesAddressHex);
+        //console.log(sellerAddressHex);
+        //console.log(royaltiesAddressHex);
         const sellerAddressBytes = arrayToBytes(sellerAddressHex.sa32);
         const sellerAddress = Cardano.Instance.Address.from_bytes(
           fromHex(sellerAddressBytes)
         );
         const sellerAddress32 = await sellerAddress.to_bech32();
 
-        console.log(sellerAddress32);
+        //console.log(sellerAddress32);
 
         const royaltiesAddressBytes = arrayToBytes(royaltiesAddressHex.ra32);
 
@@ -237,17 +237,18 @@ export const get_listed_assets =
           fromHex(royaltiesAddressBytes)
         );
         const royaltiesAddress32 = await royaltiesAddress.to_bech32();
-        console.log(royaltiesAddress32);
+        //console.log(royaltiesAddress32);
         const assetObject = {
           status: {
             datum: saleDetails,
             datumHash: datumHash,
             submittedBy: sellerAddress32,
             artistAddress: royaltiesAddress32,
+            locked:true
           },
           details: assetDetails,
         };
-        console.log(assetObject);
+        //console.log(assetObject);
         listed_assets.push(assetObject);
       }
 
