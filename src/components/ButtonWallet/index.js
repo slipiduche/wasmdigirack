@@ -117,8 +117,8 @@ const ButtonWallet = ({
             //console.log(state_wallet);
             //console.log(state_wallet.data.assets);
             if (state_wallet.data.assets != {} && state_wallet.connected) {
-              if (location.pathname != "/WalletAssets")
-                navigate("/WalletAssets");
+              //if (location.pathname != "/WalletAssets")
+                //navigate("/WalletAssets");
             }
           }
         }
