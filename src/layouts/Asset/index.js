@@ -360,7 +360,7 @@ const PurchaseAsset = ({
         {asset.status ? (
           asset.status.locked ? (
             <div className="tabs is-centered">
-              <ul>
+              {/* <ul>
                 <li
                   className={showTab === "buy" ? "is-active" : ""}
                   onClick={() => setShowTab("buy")}
@@ -373,7 +373,7 @@ const PurchaseAsset = ({
                 >
                   <a>Offer</a>
                 </li>
-              </ul>
+              </ul> */}
             </div>
           ) : (
             <></>
