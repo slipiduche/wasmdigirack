@@ -244,6 +244,7 @@ export const get_listed_assets =
             datumHash: datumHash,
             submittedBy: sellerAddress32,
             artistAddress: royaltiesAddress32,
+            locked:true
           },
           details: assetDetails,
         };
