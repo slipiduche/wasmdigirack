@@ -9,6 +9,7 @@ import { resolveError } from "../../utils/resolver";
 
 import data_collections from "../../data/collections.json";
 import data_collections_cnft from "../../data/collections-cnft.json";
+import { contractAddress } from "../../cardano/market-contract/validator";
 
 import {
   getAsset,
@@ -181,12 +182,15 @@ export const get_asset = (asset_id, callback) => async (dispatch) => {
   }
 };
 
+
 export const get_listed_assets =
   (count, lastVisible, callback) => async (dispatch) => {
     try {
       await Cardano.load();
+      const contractVersion = resolveContractVersion(asset);
+
       const listed = await getLockedUtxos(
-        "addr_test1wqh7jekjmqcup4vwfaccs30rs6v7klczs3kkxzeypxf3v0cl5luuz",
+        contractAddress(contractVersion).to_bech32(),
         {}
       );
       //console.log(listed);
@@ -244,7 +248,7 @@ export const get_listed_assets =
             datumHash: datumHash,
             submittedBy: sellerAddress32,
             artistAddress: royaltiesAddress32,
-            locked:true
+            locked: true,
           },
           details: assetDetails,
         };
