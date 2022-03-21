@@ -578,5 +578,5 @@ const resolveContractVersion = (asset) => {
   if (asset.status.contractVersion) {
     return asset.status.contractVersion;
   }
-  return "v3";
+  return process.env.REACT_APP_MARTIFY_CONTRACT_VERSION;
 };
