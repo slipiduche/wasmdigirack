@@ -354,7 +354,7 @@ export const delistToken = (wallet, asset, callback) => async (dispatch) => {
 
     const walletUtxos = await Wallet.getUtxos();
     console.log(walletUtxos)
-    const contractVersion = 'v3'//resolveContractVersion(asset);
+    const contractVersion = resolveContractVersion(asset);
 
     const assetUtxo = (
       await getLockedUtxosByAsset(
@@ -444,7 +444,7 @@ export const purchaseToken = (wallet, asset, callback) => async (dispatch) => {
     dispatch(setWalletLoading(WALLET_STATE.AWAITING_SIGNATURE));
 
     const walletUtxos = await Wallet.getUtxos();
-    const contractVersion = 'v3'//resolveContractVersion(asset);
+    const contractVersion = resolveContractVersion(asset);
 
     const assetUtxo = (
       await getLockedUtxosByAsset(
@@ -578,5 +578,5 @@ const resolveContractVersion = (asset) => {
   if (asset.status.contractVersion) {
     return asset.status.contractVersion;
   }
-  return "v1";
+  return "v3";
 };
