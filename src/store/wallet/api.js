@@ -149,7 +149,7 @@ export const listToken =
       // console.log(royaltiesAddress);
       const royaltiesPercentage = collectionDetails?.royaltiesWallet1
         ? collectionDetails?.royaltiesWallet2
-          ? 1
+          ? 45
           : 0
         : 0;
 
