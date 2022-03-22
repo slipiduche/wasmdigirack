@@ -232,7 +232,7 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <div className="dropdown relative mt-4 lg:mt-0">
+          {/* <div className="dropdown relative mt-4 lg:mt-0">
             <button
               className="font-bold inline-flex items-center px-5"
               id="dropdown_button_2"
@@ -271,7 +271,7 @@ const Navbar = () => {
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           <div className="dropdown relative mt-4 lg:mt-0 ">
             <button
