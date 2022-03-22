@@ -63,7 +63,6 @@ const Asset = () => {
     dispatch(relistToken(wallet, asset, price, callback));
   };
   const delist_token = (wallet, asset, callback) => {
-    console.log('cancel2')
     dispatch(delistToken(wallet, asset, callback));
   };
   const purchase_token = (wallet, asset, callback) => {
@@ -194,7 +193,7 @@ const AssetHeader = ({ asset, thisCollection }) => {
 const SocialLinks = ({ asset }) => {
   return (
     <div className="field has-addons social-links">
-      <p className="control">
+      {/* <p className="control">
         <a
           className="button is-small social-icon"
           href={"https://twitter.com/"} //share?url=${urls.root}assets/${asset.details.policyId}/${asset.details.asset}`}
@@ -219,7 +218,7 @@ const SocialLinks = ({ asset }) => {
             <img alt="" src="/images/icons/facebook.svg" />
           </span>
         </a>
-      </p>
+      </p> */}
       <p className="control">
         <a
           className="button is-small social-icon"
