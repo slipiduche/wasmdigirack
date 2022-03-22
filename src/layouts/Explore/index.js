@@ -95,13 +95,13 @@ const Explore = () => {
       <div className="h-[1vh] wallet_assets_container"></div>
       <div className="section explore">
         <div className="columns">
-          <div className="column is-one-quarter-tablet one-fifth-desktop is-one-fifth-widescreen is-one-fifth-fullhd">
+          {/* <div className="column is-one-quarter-tablet one-fifth-desktop is-one-fifth-widescreen is-one-fifth-fullhd">
             <Filter
               collections={collections}
               listings={listings}
               setFilteredListings={setFilteredListings}
             />
-          </div>
+          </div> */}
           <div className="column">
             <ListingSection listings={filteredListings} />
           </div>
