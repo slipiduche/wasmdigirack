@@ -118,7 +118,7 @@ const ButtonWallet = ({
             //console.log(state_wallet.data.assets);
             if (state_wallet.data.assets != {} && state_wallet.connected) {
               //if (location.pathname != "/WalletAssets")
-                //navigate("/WalletAssets");
+              //navigate("/WalletAssets");
             }
           }
         }
@@ -142,11 +142,21 @@ const ButtonWallet = ({
           }}
           className="block px-5 mt-4 lg:inline-block lg:mt-0 mb-4 lg:mb-0"
         >
-          <img
-            src={require("../../images/Navbar/wallet.png")}
-            alt="wallet"
-            className="max-w-[1.7rem]"
-          />
+          {state_wallet.connected ? (
+            <img
+              tintColor="green"
+              src={require("../../images/Navbar/walletGreen.png")}
+              alt="wallet"
+              className="max-w-[1.7rem]"
+            />
+          ) : (
+            <img
+              tintColor="green"
+              src={require("../../images/Navbar/wallet.png")}
+              alt="wallet"
+              className="max-w-[1.7rem]"
+            />
+          )}
         </a>
       }
       {/* {
