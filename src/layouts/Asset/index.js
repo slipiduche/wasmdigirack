@@ -299,7 +299,7 @@ const PurchaseAsset = ({
   purchase_token,
 }) => {
   const [showTab, setShowTab] = useState(
-    asset.status ? (asset.status.locked ? "buy" : "offer") : "offer"
+    asset.status ? (asset.status.locked ? "buy" : "buy") : "buy"
   );
   const [userInputAmount, setUserInputAmount] = useState("");
   const [showModal, setShowModal] = useState(false);
