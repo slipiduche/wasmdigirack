@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ButtonWallet from "../ButtonWallet";
@@ -5,9 +6,13 @@ import "./Navbar.css";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
+  const [showComming, setShowComming] = useState(false);
 
   const hideNavBar = () => {
     setShow(false);
+  };
+  const hideComming = () => {
+    setShowComming(false);
   };
 
   const [isFixed, setIsFixed] = useState(false);
@@ -341,7 +346,7 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <Link
+          {/* <Link
             onClick={() => {
               setShow(!show);
             }}
@@ -349,7 +354,34 @@ const Navbar = () => {
             className="block px-5 mt-4 lg:inline-block lg:mt-0"
           >
             Create
-          </Link>
+          </Link> */}
+          <div>
+            {showComming ? (
+              <a
+                onClick={() => {
+                  setShow(false);
+                }}
+                onMouseLeave={() => {
+                  setShowComming(false);
+                }}
+                className="block px-0 mt-4 lg:inline-block lg:mt-0"
+              >
+                Comming Soon
+              </a>
+            ) : (
+              <a
+                onClick={() => {
+                  setShow(false);
+                }}
+                className="block px-5 mt-4 lg:inline-block lg:mt-0"
+                onMouseOver={() => {
+                  setShowComming(true);
+                }}
+              >
+                Create
+              </a>
+            )}
+          </div>
 
           {/* <Link onClick = {()=>{setShow(!show)}} to = "/connectwallet" className="block px-5 mt-4 lg:inline-block lg:mt-0 mb-4 lg:mb-0">
                         <img src = {require('../../images/Navbar/wallet.png')} alt = "wallet" className="max-w-[1.7rem]" />
