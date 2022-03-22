@@ -92,7 +92,13 @@ const Explore = () => {
 
   return (
     <div className="bg-white">
-      <div className="h-[1vh] wallet_assets_container"></div>
+      <div className="h-[1vh] wallet_assets_container">
+        <div className="flex flex-col items-center w-full">
+          <h1 className="text-center font-bold text-xl sm:text-2xl lg:text-3xl max-w-[27ch] mb-4">
+            Marketplace
+          </h1>
+        </div>
+      </div>
       <div className="section explore">
         <div className="columns">
           {/* <div className="column is-one-quarter-tablet one-fifth-desktop is-one-fifth-widescreen is-one-fifth-fullhd">
