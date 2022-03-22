@@ -105,7 +105,7 @@ const Navbar = () => {
                         <input type="text" className="px-4 py-2 w-80" placeholder="Search..."></input>
                     </div>
                 </div> */}
-        <div className="control has-icons-left is-expanded">
+        {/* <div className="control has-icons-left is-expanded">
           <input
             className="input"
             type="text"
@@ -116,7 +116,7 @@ const Navbar = () => {
           <span className="icon is-small is-left">
             <i className="fa fa-search"></i>
           </span>
-        </div>
+        </div> */}
 
         <div className="text-base lg:flex-grow font-[600] text-lg lg:flex lg:justify-end">
           <div className="dropdown relative mt-4 lg:mt-0 z-10">
