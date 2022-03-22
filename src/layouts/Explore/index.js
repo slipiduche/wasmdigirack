@@ -4,6 +4,9 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 import { get_listed_assets } from "../../store/collection/api";
 import ListingDisplayListing from "../../components/ListingDisplayListing";
+import { Spinner } from "react-spinner-animated";
+
+import "react-spinner-animated/dist/index.css";
 
 import "bulma-checkradio/dist/css/bulma-checkradio.min.css";
 
@@ -109,7 +112,10 @@ const Explore = () => {
             />
           </div> */}
           <div className="column">
-            <ListingSection listings={filteredListings} />
+            <ListingSection
+              listings={filteredListings}
+              isFetching={isFetching}
+            />
           </div>
         </div>
       </div>
@@ -248,10 +254,18 @@ const Filter = ({ collections, listings, setFilteredListings }) => {
   );
 };
 
-const ListingSection = ({ listings }) => {
+const ListingSection = ({ listings, isFetching }) => {
   return (
     <>
-      {listings.length > 0 ? (
+      {isFetching ? (
+        <section className="hero is-medium">
+          <div className="hero-body">
+            <div className="container has-text-centered">
+              <Spinner speed={5} text={"Loading..."} />
+            </div>
+          </div>
+        </section>
+      ) : listings.length > 0 ? (
         <ListingDisplayListing listings={listings} />
       ) : (
         <section className="hero is-medium">
