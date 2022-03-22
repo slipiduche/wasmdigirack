@@ -87,7 +87,7 @@ const ButtonWallet = ({
           "no-wallet",
           "no-accept",
 
-          WALLET_STATE.CONNECTING,
+          //WALLET_STATE.CONNECTING,
           WALLET_STATE.GETTING_ASSETS,
         ].includes(state_wallet.loading)
       )
