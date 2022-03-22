@@ -148,7 +148,7 @@ const Navbar = () => {
                   All NFTs
                 </Link>
               </li>
-              <li className="">
+              {/* <li className="">
                 <Link
                   onClick={hideNavBar}
                   to="/collections/art"
@@ -228,7 +228,7 @@ const Navbar = () => {
                 >
                   Utility
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 
