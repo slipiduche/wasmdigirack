@@ -38,9 +38,9 @@ const ListingDisplayListing = ({ listings }) => {
   const filtered_listing = matchedtokens
     .sort((a, b) => {
       let a_price =
-        a.status.datum.price !== undefined ? a.status.datum.price : 999999;
+        a.price !== undefined ? a.price : 999999;
       let b_price =
-        b.status.datum.price !== undefined ? b.status.datum.price : 999999;
+        b.price !== undefined ? b.price : 999999;
 
       if (sortby === "lowtohigh") {
         return a_price - b_price;

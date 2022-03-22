@@ -15,7 +15,7 @@ const AssetCard = ({
   let collection = false;
   if (asset) {
     collection = state_collection.policies_collections[asset.details.policyId];
-    console.log(asset);
+    //console.log(asset);
   }
 
   return (
@@ -82,7 +82,7 @@ const AssetCard = ({
                         <div className="title is-size-5 tag-price">
                           {
                             <p>
-                              {fromLovelace(asset.status.datum.price)}
+                              {fromLovelace(100)}
                               <span className="ada_symbol">&nbsp;₳</span>
                             </p>
                           }

@@ -16,7 +16,7 @@ import "./bulma.css";
 
 const Explore = () => {
   let firstTime = 0;
-  const ITEMS_PER_PAGE = 48;
+  const ITEMS_PER_PAGE = 10;
   const dispatch = useDispatch();
   const [isFetching, setIsFetching] = useState(false);
   const [listings, setListings] = useState([]);

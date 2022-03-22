@@ -64,7 +64,7 @@ export const getAssetTransactions = async (
  */
 export const getLockedUtxos = async (
   address,
-  { page = 1, count = 100, order = "asc" }
+  { page = 1, count = 48, order = "asc" }
 ) => {
   try {
     return await cardano(
