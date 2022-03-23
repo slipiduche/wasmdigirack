@@ -137,7 +137,27 @@ const ButtonWallet = ({
 
               onclick_connect_wallet();
             } else {
-              navigate("/WalletAssets");
+              if (location.pathname == "/WalletAssets") {
+                loadAssets(state_wallet, (res) => {
+                  if (res.success) {
+                    //console.log(state_wallet);
+
+                    if (state_wallet.data.assets) {
+                      //console.log(state_wallet);
+                      //console.log(state_wallet.data.assets);
+                      if (
+                        state_wallet.data.assets != {} &&
+                        state_wallet.connected
+                      ) {
+                        //if (location.pathname != "/WalletAssets")
+                        //navigate("/WalletAssets");
+                      }
+                    }
+                  }
+                });
+              } else {
+                navigate("/WalletAssets");
+              }
             }
           }}
           className="block px-5 mt-4 lg:inline-block lg:mt-0 mb-4 lg:mb-0"
