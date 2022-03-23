@@ -152,13 +152,15 @@ const AssetHeader = ({ asset, thisCollection }) => {
           <div className="level-item asset_name_block">
             <h1>{asset.details.onchainMetadata.name}</h1>
             {thisCollection ? (
-              <Link to={`/collection/${thisCollection.id}`}>
-                {thisCollection.meta.name}
-              </Link>
+              // <Link to={`/collection/${thisCollection.id}`}>
+              //   {thisCollection.meta.name}
+              // </Link>
+              <a>{thisCollection.meta.name}</a>
             ) : (
-              <Link to={`/collection/${asset.details.policyId}`}>
-                {asset.details.policyId}
-              </Link>
+              // <Link to={`/collection/${asset.details.policyId}`}>
+              //   {asset.details.policyId}
+              // </Link>
+              <a>{asset.details.policyId}</a>
             )}
             {thisCollection.is_martify_verified ? (
               <span className="icon" data-tooltip="Martify Verified">
