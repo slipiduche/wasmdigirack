@@ -26,7 +26,7 @@ const WalletAssets = ({
   availableWallets,
   connectWallet,
   loadAssets,
-  state_collection
+  state_collection,
 }) => {
   const dispatch = useDispatch;
   const [walletAddress, setWalletAddress] = useState("");
@@ -48,7 +48,7 @@ const WalletAssets = ({
     if (state_wallet.data.address) {
       setWalletAddress(state_wallet.data.address);
     }
-  }, [loadAssets, state_wallet,state_collection]);
+  }, [loadAssets, state_wallet, state_collection]);
 
   return (
     <div className="bg-white">
@@ -92,34 +92,38 @@ const WalletAssets = ({
               alt={item.title}
               loading="lazy"
             /> */}
-      <div className="py-8 border-t-2 border-gray-400 mt-8">
-        <Box sx={{ flexGrow: 1 }}>
-          <Grid container spacing={2}>
-            {walletAssets.map((asset, i) => {
-              //console.log(asset.details.onchainMetadata.image);
-              const assetMetadata = asset.details.onchainMetadata;
+      <div className="section explore">
+        <div className="columns">
+          <div className="py-8 border-t-2 border-gray-400 mt-8">
+            <Box sx={{ flexGrow: 1 }}>
+              <Grid container spacing={2}>
+                {walletAssets.map((asset, i) => {
+                  //console.log(asset.details.onchainMetadata.image);
+                  const assetMetadata = asset.details.onchainMetadata;
 
-              // const imageUrl =
-              //   assetMetadata.image != null
-              //     ? `https://infura-ipfs.io/ipfs/${asset.details.onchainMetadata.image.slice(
-              //         7
-              //       )}`
-              //     : require("../../images/WalletAssets/assetcard3.png");
-              // const assetName = assetMetadata.name;
-              // console.log(imageUrl);
-              return (
-                <Grid item xs={4}>
-                  <WalletAssetCard
-                    state_wallet={state_wallet}
-                    asset={asset}
-                    assetM={assetMetadata}
-                    width={330}
-                  />
-                </Grid>
-              );
-            })}
-          </Grid>
-        </Box>
+                  // const imageUrl =
+                  //   assetMetadata.image != null
+                  //     ? `https://infura-ipfs.io/ipfs/${asset.details.onchainMetadata.image.slice(
+                  //         7
+                  //       )}`
+                  //     : require("../../images/WalletAssets/assetcard3.png");
+                  // const assetName = assetMetadata.name;
+                  // console.log(imageUrl);
+                  return (
+                    <Grid item xs={4}>
+                      <WalletAssetCard
+                        state_wallet={state_wallet}
+                        asset={asset}
+                        assetM={assetMetadata}
+                        width={330}
+                      />
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            </Box>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -125,8 +125,10 @@ const Explore = () => {
               {isFetching && page == 1 ? (
                 <section className="hero is-medium">
                   <div className="hero-body">
-                    <div className="container has-text-centered">
-                      <Spinner speed={5} text={"Loading..."} />
+                    <div className="flex flex-col items-center w-full">
+                      <div className="container has-text-centered">
+                        <Spinner center={false} speed={5} text={"Loading..."} />
+                      </div>
                     </div>
                   </div>
                 </section>
@@ -301,7 +303,7 @@ const ListingSection = ({ listings, isFetching }) => {
         <section className="hero is-medium">
           <div className="hero-body">
             <div className="container has-text-centered">
-              <Spinner speed={5} text={"Loading..."} />
+              <Spinner center={false} speed={5} text={"Loading..."} />
             </div>
           </div>
         </section>
