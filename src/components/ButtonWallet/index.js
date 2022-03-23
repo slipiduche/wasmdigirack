@@ -144,14 +144,12 @@ const ButtonWallet = ({
         >
           {state_wallet.connected ? (
             <img
-              tintColor="green"
               src={require("../../images/Navbar/walletGreen.png")}
               alt="wallet"
               className="max-w-[1.7rem]"
             />
           ) : (
             <img
-              tintColor="green"
               src={require("../../images/Navbar/wallet.png")}
               alt="wallet"
               className="max-w-[1.7rem]"
