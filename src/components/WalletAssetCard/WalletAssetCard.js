@@ -12,7 +12,7 @@ const WalletAssetCard = ({ state_wallet, asset, assetM, width }) => {
   return (
     <div className="flex flex-col max-w-[412px] items-center rounded-[30px] border-[3px] border-gray-300">
       <FadeImg
-        className="w-full"
+        className="w-full rounded-[30px]"
         src={imageUrl}
         alt="assetcard"
         style={{ width: width, height: width }}
