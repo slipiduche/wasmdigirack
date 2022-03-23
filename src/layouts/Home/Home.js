@@ -137,7 +137,7 @@ const Home = () => {
 
                 <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-1 md:gap-y-5 mb-8 lg:mb-12'>
                     {topcollection.map((collection, index) => {
-                        return <CollectionCard href = {`/collection/${collection.id}`} number = {index+1} cardDetails={collection} />
+                        return <CollectionCard key={index} href = {`/collection/${collection.id}`} number = {index+1} cardDetails={collection} />
                     })}
                     
                     
