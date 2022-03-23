@@ -10,7 +10,7 @@ const WalletAssetCard = ({ state_wallet, asset, assetM, width }) => {
       ? `https://infura-ipfs.io/ipfs/${asset.details.onchainMetadata.image.slice(7)}`
       : require("../../images/WalletAssets/assetcard3.png");
   return (
-    <div className="flex flex-col max-w-[412px] items-center rounded-[30px] border-[3px] border-gray-300">
+    <div className="flex flex-col max-w-[412px] items-center rounded-[30px] border-[3px] border-gray-300 mb-4">
       <FadeImg
         className="w-full rounded-[30px]"
         src={imageUrl}
