@@ -66,6 +66,7 @@ export const getLockedUtxos = async (
   address,
   { page = 1, count = 100, order = "asc" }
 ) => {
+  //console.log(`page:${page}--count: ${count}`)
   try {
     return await cardano(
       `addresses/${address}/utxos?page=${page}&count=${count}&order=${order}`

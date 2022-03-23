@@ -16,13 +16,13 @@ import "./bulma.css";
 
 const Explore = () => {
   let firstTime = 0;
-  const ITEMS_PER_PAGE = 48;
+  const ITEMS_PER_PAGE = 5;
   const dispatch = useDispatch();
   const [isFetching, setIsFetching] = useState(false);
   const [listings, setListings] = useState([]);
   const [filteredListings, setFilteredListings] = useState([]);
   const [collections, setCollections] = useState([]);
-  const [lastVisible, setLastVisible] = useState(null);
+  const [page, setPage] = useState(1);
   const [hasMore, sethasMore] = useState(true);
 
   useEffect(() => {
@@ -45,18 +45,23 @@ const Explore = () => {
   });
 
   const loadNext = () => {
+    //console.log(`hasmore?:${hasMore}---isfetching?${isFetching}`);
     if (hasMore && !isFetching) {
+      //console.log("next");
       setIsFetching(true);
       dispatch(
-        get_listed_assets(ITEMS_PER_PAGE, lastVisible, (res) => {
+        get_listed_assets(ITEMS_PER_PAGE, page, (res) => {
           if (res.data) {
             //console.log(res.data);
             setListings([...listings, ...res.data]);
             setFilteredListings([...filteredListings, ...res.data]);
             sethasMore(res.data.length > 0);
-
+            // console.log('aqui')
+            // console.log(res.data.length)
             if (res.data.length > 0) {
-              setLastVisible(res.data[res.data.length - 1]);
+              const nextPage = page + 1;
+              //console.log(nextPage);
+              setPage(nextPage);
             }
 
             let counter = 0;
@@ -112,10 +117,45 @@ const Explore = () => {
             />
           </div> */}
           <div className="column">
-            <ListingSection
+            {/* <ListingSection
               listings={filteredListings}
               isFetching={isFetching}
-            />
+            /> */}
+            <div className="column">
+              {isFetching && page == 1 ? (
+                <section className="hero is-medium">
+                  <div className="hero-body">
+                    <div className="container has-text-centered">
+                      <Spinner speed={5} text={"Loading..."} />
+                    </div>
+                  </div>
+                </section>
+              ) : (
+                <InfiniteScroll
+                  className="infinite-scroll-container"
+                  dataLength={listings.length}
+                  next={loadNext}
+                  hasMore={hasMore}
+                  loader={
+                    <progress
+                      className="progress is-small is-primary"
+                      max="100"
+                    ></progress>
+                  }
+                  endMessage={
+                    <div style={{ textAlign: "center" }}>
+                      <span className="icon has-text-info">
+                        <i className="fas fa-info-circle"></i>
+                      </span>
+                      <b>Yay! You have seen it all</b>
+                    </div>
+                  }
+                  scrollableTarget="body"
+                >
+                  <ListingSection listings={filteredListings} />
+                </InfiniteScroll>
+              )}
+            </div>
           </div>
         </div>
       </div>
