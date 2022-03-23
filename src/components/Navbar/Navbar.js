@@ -68,11 +68,11 @@ const Navbar = () => {
       <div className="flex items-center flex-shrink-0 mr-8">
         <Link to="/" className="flex items-center">
           <img
-            src={require("../../images/Navbar/logo.png")}
+            src={require("../../images/Navbar/digiracklogo.jpg")}
             alt="logo"
-            className="max-w-[3.5rem] mr-4"
+            className="max-w-[8rem] mr-4"
           />
-          <span className="font-semibold text-xl tracking-tight">Digirack</span>
+          {/* <span className="font-semibold text-xl tracking-tight">Digirack</span> */}
         </Link>
       </div>
       <div className="block lg:hidden">

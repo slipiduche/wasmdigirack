@@ -13,6 +13,8 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import WalletAssetCard from "../../components/WalletAssetCard/WalletAssetCard";
+import AssetCard from "../../components/WalletAssetCardM";
+import ListingDisplayWalletAssets from "../../components/ListingDisplayWalletAssets";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -92,38 +94,8 @@ const WalletAssets = ({
               alt={item.title}
               loading="lazy"
             /> */}
-      <div className="section explore">
-        <div className="columns">
-          <div className="py-8 border-t-2 border-gray-400 mt-8">
-            <Box sx={{ flexGrow: 1 }}>
-              <Grid container spacing={2}>
-                {walletAssets.map((asset, i) => {
-                  //console.log(asset.details.onchainMetadata.image);
-                  const assetMetadata = asset.details.onchainMetadata;
-
-                  // const imageUrl =
-                  //   assetMetadata.image != null
-                  //     ? `https://infura-ipfs.io/ipfs/${asset.details.onchainMetadata.image.slice(
-                  //         7
-                  //       )}`
-                  //     : require("../../images/WalletAssets/assetcard3.png");
-                  // const assetName = assetMetadata.name;
-                  // console.log(imageUrl);
-                  return (
-                    <Grid item xs={4}>
-                      <WalletAssetCard
-                        state_wallet={state_wallet}
-                        asset={asset}
-                        assetM={assetMetadata}
-                        width={330}
-                      />
-                    </Grid>
-                  );
-                })}
-              </Grid>
-            </Box>
-          </div>
-        </div>
+      <div className="section">
+        <ListingDisplayWalletAssets walletAssets={walletAssets} state_wallet={state_wallet} />
       </div>
     </div>
   );

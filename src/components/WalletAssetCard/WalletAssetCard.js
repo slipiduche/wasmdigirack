@@ -6,8 +6,8 @@ import SellDialog from "../SellDialog/SellDialog";
 
 const WalletAssetCard = ({ state_wallet, asset, assetM, width }) => {
   const imageUrl =
-    assetM.image != null
-      ? `https://infura-ipfs.io/ipfs/${assetM.image.slice(7)}`
+    asset.details.onchainMetadata.image != null
+      ? `https://infura-ipfs.io/ipfs/${asset.details.onchainMetadata.image.slice(7)}`
       : require("../../images/WalletAssets/assetcard3.png");
   return (
     <div className="flex flex-col max-w-[412px] items-center rounded-[30px] border-[3px] border-gray-300">
@@ -21,10 +21,10 @@ const WalletAssetCard = ({ state_wallet, asset, assetM, width }) => {
         <div className="flex flex-col">
           <p className="text-base lg:text-lg font-semibold mb-4">
             collection:{" "}
-            {assetM.collection ? assetM.collection : "no collection"}
+            {asset.details.onchainMetadata.collection ? asset.details.onchainMetadata.collection : "no collection"}
           </p>
           <p className="text-base lg:text-lg font-semibold mb-4">
-            asset name: {assetM.name}
+            asset name: {asset.details.onchainMetadata.name}
           </p>
           {/* <p className="text-base lg:text-lg font-semibold mb-4">hola</p> */}
         </div>
@@ -41,7 +41,7 @@ const WalletAssetCard = ({ state_wallet, asset, assetM, width }) => {
         <SellDialog
           state_wallet={state_wallet}
           asset={asset}
-          assetM={assetM}
+          assetM={asset.details.onchainMetadata}
         />
       </div>
     </div>
