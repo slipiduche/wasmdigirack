@@ -13,9 +13,15 @@ const AssetCard = ({
   show_offer,
 }) => {
   let collection = false;
+  let tagCollection = false;
   if (asset) {
     collection = state_collection.policies_collections[asset.details.policyId];
-   // console.log(asset);
+    if (asset.details.onchainMetadata.collection) {
+      // console.log(asset.details.onchainMetadata.collection)
+      tagCollection = asset.details.onchainMetadata.collection;
+      // console.log(tagCollection)
+    }
+    // console.log(asset);
   }
 
   return (
@@ -40,10 +46,13 @@ const AssetCard = ({
                   <div className="card-content">
                     <div className="media is-clipped">
                       <div className="media-content clipped">
-                        <p className="title is-size-5 clipped">
+                        <p className="is-size-5 clipped">
                           {asset.details.onchainMetadata.name}
                         </p>
-                        <p className="subtitle is-size-7 clipped">
+                        <p className=" is-size-7 clipped">
+                          {tagCollection ? tagCollection : ""}
+                        </p>
+                        <p className=" is-size-7 clipped">
                           {collection
                             ? collection.is_martify_verified
                               ? collection.meta.name

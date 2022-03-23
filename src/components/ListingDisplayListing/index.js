@@ -22,10 +22,17 @@ const ListingDisplayListing = ({ listings }) => {
       if (searchText === "") {
         return_this = true;
       } else if (
-        searchText !== "" &&
-        x.details.onchainMetadata.name
-          .toLowerCase()
-          .includes(searchText.toLowerCase())
+        searchText !== "" && x.details.onchainMetadata.name
+          ? x.details.onchainMetadata.name
+              .toLowerCase()
+              .includes(searchText.toLowerCase())
+            ? true
+            : x.details.onchainMetadata.collection
+            ? x.details.onchainMetadata.collection
+                .toLowerCase()
+                .includes(searchText.toLowerCase())
+            : false
+          : false
       ) {
         return_this = true;
       }
