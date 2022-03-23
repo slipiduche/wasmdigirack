@@ -90,10 +90,10 @@ const Asset = () => {
           <></>
         )}
         {asset ? (
-          <div className="container asset">
+          <div className="asset">
             <section className="section">
               <div className="columns">
-                <div className="column is-two-fifths">
+                <div className="column is-one-third">
                   <AssetImage asset={asset} />
                   <Listing
                     asset={asset}
@@ -106,7 +106,7 @@ const Asset = () => {
                   />
                 </div>
 
-                <div className="column">
+                <div className="column is-two-thirds">
                   <div className="content">
                     <AssetHeader
                       asset={asset}
@@ -993,11 +993,19 @@ const ListAllAttributes = ({ asset }) => {
           );
         })
         .map((attr, i) => {
-          return (
-            <React.Fragment key={i}>
-              <ListAttributes asset={asset} attr={attr} key={i} />
-            </React.Fragment>
-          );
+          console.log(attr);
+          if (
+            attr == "authors" ||
+            attr == "category" ||
+            attr == "collection" ||
+            attr == "description"
+          ) {
+            return (
+              <React.Fragment key={i}>
+                <ListAttributes asset={asset} attr={attr} key={i} />
+              </React.Fragment>
+            );
+          }
         })}
     </>
   );

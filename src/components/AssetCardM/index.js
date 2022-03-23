@@ -15,7 +15,7 @@ const AssetCard = ({
   let collection = false;
   if (asset) {
     collection = state_collection.policies_collections[asset.details.policyId];
-    console.log(asset);
+   // console.log(asset);
   }
 
   return (
