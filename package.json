@@ -16,7 +16,7 @@
     "buffer": "^6.0.3",
     "bulma-checkradio": "^2.1.2",
     "bulma-extensions": "^6.2.7",
-    "firebase": "^9.2.0",
+    "firebase": "^9.6.9",
     "font-awesome": "^4.7.0",
     "fuse.js": "^6.4.6",
     "moment": "^2.29.1",

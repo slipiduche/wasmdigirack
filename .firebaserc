@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "testnet": "nftcardano-aeb7b",
+    "mainnet": "martify-bc2f5"
+  },
+  "targets": {}
+}
