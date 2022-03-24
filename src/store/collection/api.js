@@ -183,7 +183,7 @@ export const get_asset = (asset_id, callback) => async (dispatch) => {
 };
 
 export const get_listed_assets =
-  (count, page, callback) => async (dispatch) => {
+  (count, lastVisible, callback) => async (dispatch) => {
     try {
       // await Cardano.load();
       // const contractVersion = process.env.REACT_APP_MARTIFY_CONTRACT_VERSION;

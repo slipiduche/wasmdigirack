@@ -51,7 +51,7 @@ export const getAsset = async (assetId) => {
     if (assetId) {
       const reference = doc(firestore, "assets", assetId);
 
-      // const snapshot = await getDoc(reference);
+      const snapshot = await getDoc(reference);
 
       if (snapshot.exists()) {
         return snapshot.data();

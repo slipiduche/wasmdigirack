@@ -22,7 +22,7 @@ const Explore = () => {
   const [listings, setListings] = useState([]);
   const [filteredListings, setFilteredListings] = useState([]);
   const [collections, setCollections] = useState([]);
-  const [page, setPage] = useState(1);
+  const [lastVisible, setLastVisible] = useState(null);
   const [hasMore, sethasMore] = useState(true);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const Explore = () => {
       //console.log("next");
       setIsFetching(true);
       dispatch(
-        get_listed_assets(ITEMS_PER_PAGE, page, (res) => {
+        get_listed_assets(ITEMS_PER_PAGE, lastVisible, (res) => {
           if (res.data) {
             //console.log(res.data);
             setListings([...listings, ...res.data]);
@@ -59,9 +59,7 @@ const Explore = () => {
             // console.log('aqui')
             // console.log(res.data.length)
             if (res.data.length > 0) {
-              const nextPage = page + 1;
-              //console.log(nextPage);
-              setPage(nextPage);
+              setLastVisible(res.data[res.data.length - 1]);
             }
 
             let counter = 0;
@@ -122,7 +120,7 @@ const Explore = () => {
               isFetching={isFetching}
             /> */}
             <div className="column">
-              {isFetching && page == 1 ? (
+              {isFetching && lastVisible == null ? (
                 <section className="hero is-medium">
                   <div className="hero-body">
                     <div className="flex flex-col items-center w-full">
