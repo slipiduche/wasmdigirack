@@ -1,15 +1,15 @@
-// import {
-//   collection,
-//   doc,
-//   getDoc,
-//   getDocs,
-//   limit,
-//   orderBy,
-//   query,
-//   setDoc,
-//   startAfter,
-//   where,
-// } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  limit,
+  orderBy,
+  query,
+  setDoc,
+  startAfter,
+  where,
+} from "firebase/firestore";
 import { getAssetDetails, getMintedAssets } from "../cardano/blockfrost-api";
 import { firestore } from "../firebase";
 
@@ -49,13 +49,13 @@ export const addAssetOffer = async (asset, newOffer) => {
 export const getAsset = async (assetId) => {
   try {
     if (assetId) {
-      // const reference = doc(firestore, "assets", assetId);
+      const reference = doc(firestore, "assets", assetId);
 
       // const snapshot = await getDoc(reference);
 
-      // if (snapshot.exists()) {
-      //   return snapshot.data();
-      // } else {
+      if (snapshot.exists()) {
+        return snapshot.data();
+      } else {
         const assetDetails = await getAssetDetails(assetId);
         if (assetDetails === undefined) return undefined;
 
@@ -66,10 +66,10 @@ export const getAsset = async (assetId) => {
           status: { locked: false },
         };
 
-        //await saveAsset(asset);
+        await saveAsset(asset);
 
         return asset;
-     // }
+      }
     }
   } catch (error) {
     console.error(`Unexpected error in getAsset. [Message: ${error.message}]`);
@@ -99,32 +99,32 @@ export const getCollectionAssets = async (
   count = 100,
   lastVisible
 ) => {
-  // try {
-  //   if (policyId) {
-  //     const reference = await query(
-  //       collection(firestore, "assets"),
-  //       where("details.policyId", "==", policyId),
-  //       orderBy("details.readableAssetName"),
-  //       startAfter(lastVisible?.details?.readableAssetName ?? ""),
-  //       limit(count)
-  //     );
+  try {
+    if (policyId) {
+      const reference = await query(
+        collection(firestore, "assets"),
+        where("details.policyId", "==", policyId),
+        orderBy("details.readableAssetName"),
+        startAfter(lastVisible?.details?.readableAssetName ?? ""),
+        limit(count)
+      );
 
-  //     const snapshot = await getDocs(reference);
+      const snapshot = await getDocs(reference);
 
-  //     if (snapshot.empty || snapshot.docs.length < count) {
-  //       const assetIds = await getMintedAssets(policyId, { page, count });
-  //       return await getAssets(assetIds);
-  //     } else {
-  //       return snapshot.docs.map((doc) => doc.data());
-  //     }
-  //   }
-  //   return [];
-  // } catch (error) {
-  //   console.error(
-  //     `Unexpected error in getCollectionAssets. [Message: ${error.message}]`
-  //   );
-  //   throw new Error("COULD_NOT_RETRIEVE_COLLECTION_ASSETS_FROM_DB");
-  // }
+      if (snapshot.empty || snapshot.docs.length < count) {
+        const assetIds = await getMintedAssets(policyId, { page, count });
+        return await getAssets(assetIds);
+      } else {
+        return snapshot.docs.map((doc) => doc.data());
+      }
+    }
+    return [];
+  } catch (error) {
+    console.error(
+      `Unexpected error in getCollectionAssets. [Message: ${error.message}]`
+    );
+    throw new Error("COULD_NOT_RETRIEVE_COLLECTION_ASSETS_FROM_DB");
+  }
 };
 
 /**
@@ -188,40 +188,40 @@ export const unlockAsset = async (asset, { txHash, address }) => {
  * @throws COULD_NOT_RETRIEVE_LOCKED_ASSETS_FROM_DB
  */
 export const getLockedAssets = async (count = 100, lastVisible) => {
-  // try {
-  //   const reference = await query(
-  //     collection(firestore, "assets"),
-  //     where("status.locked", "==", true),
-  //     orderBy("status.submittedOn"),
-  //     startAfter(lastVisible?.status?.submittedOn ?? 0),
-  //     limit(count)
-  //   );
+  try {
+    const reference = await query(
+      collection(firestore, "assets"),
+      where("status.locked", "==", true),
+      orderBy("status.submittedOn"),
+      startAfter(lastVisible?.status?.submittedOn ?? 0),
+      limit(count)
+    );
 
-  //   const snapshot = await getDocs(reference);
+    const snapshot = await getDocs(reference);
 
-  //   if (snapshot.empty) return [];
-  //   return snapshot.docs.map((doc) => doc.data());
-  // } catch (error) {
-  //   console.error(
-  //     `Unexpected error in getLockedAssets. [Message: ${error.message}]`
-  //   );
-  //   throw new Error("COULD_NOT_RETRIEVE_LOCKED_ASSETS_FROM_DB");
-  // }
+    if (snapshot.empty) return [];
+    return snapshot.docs.map((doc) => doc.data());
+  } catch (error) {
+    console.error(
+      `Unexpected error in getLockedAssets. [Message: ${error.message}]`
+    );
+    throw new Error("COULD_NOT_RETRIEVE_LOCKED_ASSETS_FROM_DB");
+  }
 };
 
 /**
  * @throws COULD_NOT_SAVE_ASSET_TO_DB
  */
 export const saveAsset = async (asset) => {
-  // try {
-  //   if (asset) {
-  //     const reference = doc(firestore, "assets", asset.details.asset);
-  //     await setDoc(reference, asset, { merge: true });
-  //   }
-  // } catch (error) {
-  //   console.error(`Unexpected error in saveAsset. [Message: ${error.message}]`);
-  //   throw new Error("COULD_NOT_SAVE_ASSET_TO_DB");
-  // }
+  try {
+    if (asset) {
+      const reference = doc(firestore, "assets", asset.details.asset);
+      await setDoc(reference, asset, { merge: true });
+    }
+  } catch (error) {
+    console.error(`Unexpected error in saveAsset. [Message: ${error.message}]`);
+    throw new Error("COULD_NOT_SAVE_ASSET_TO_DB");
+  }
 };
 
 /**

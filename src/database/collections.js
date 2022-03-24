@@ -1,44 +1,44 @@
-// import { doc, getDoc, setDoc } from "firebase/firestore";
-// import { firestore } from "../firebase";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { firestore } from "../firebase";
 
 export const getCollection = async (policyId) => {
-  // try {
-  //   if (policyId) {
-  //     const reference = doc(firestore, "collections", policyId);
+  try {
+    if (policyId) {
+      const reference = doc(firestore, "collections", policyId);
 
-  //     const snapshot = await getDoc(reference);
+      const snapshot = await getDoc(reference);
 
-  //     if (snapshot.exists()) {
-  //       return snapshot.data();
-  //     } else {
-  //       const collection = { verified: false };
+      if (snapshot.exists()) {
+        return snapshot.data();
+      } else {
+        const collection = { verified: false };
 
-  //       //await saveCollection(collection, policyId);
+        await saveCollection(collection, policyId);
 
-  //       return collection;
-  //     }
-  //   }
-  // } catch (error) {
-  //   console.error(
-  //     `Unexpected error in getCollection. [Message: ${error.message}]`
-  //   );
-  //   throw error;
-  // }
+        return collection;
+      }
+    }
+  } catch (error) {
+    console.error(
+      `Unexpected error in getCollection. [Message: ${error.message}]`
+    );
+    throw error;
+  }
 };
 
 export const saveCollection = async (collection, policyId) => {
-  // try {
-  //   if (collection) {
-  //     const reference = doc(firestore, "collections", policyId);
+  try {
+    if (collection) {
+      const reference = doc(firestore, "collections", policyId);
 
-  //     await setDoc(reference, collection, { merge: true });
-  //   }
-  // } catch (error) {
-  //   console.error(
-  //     `Unexpected error in saveCollection. [Message: ${error.message}]`
-  //   );
-  //   throw error;
-  // }
+      await setDoc(reference, collection, { merge: true });
+    }
+  } catch (error) {
+    console.error(
+      `Unexpected error in saveCollection. [Message: ${error.message}]`
+    );
+    throw error;
+  }
 };
 
 /**

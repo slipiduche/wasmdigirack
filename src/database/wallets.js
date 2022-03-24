@@ -1,12 +1,12 @@
-// import { doc, getDoc, setDoc } from "firebase/firestore";
-// import { firestore } from "../firebase";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { firestore } from "../firebase";
 
 export const walletExists = async (address) => {
-  // if (address) {
-  //   const reference = doc(firestore, "wallets", address);
-  //   const snapshot = await getDoc(reference);
-  //   return snapshot.exists();
-  // }
+  if (address) {
+    const reference = doc(firestore, "wallets", address);
+    const snapshot = await getDoc(reference);
+    return snapshot.exists();
+  }
   return false;
 };
 
@@ -17,21 +17,21 @@ export const walletExists = async (address) => {
 export const getWallet = async (address) => {
   try {
     if (address) {
-      // const reference = doc(firestore, "wallets", address);
-      // const snapshot = await getDoc(reference);
-      // if (snapshot.exists()) {
-      //   return snapshot.data();
-      // } else {
+      const reference = doc(firestore, "wallets", address);
+      const snapshot = await getDoc(reference);
+      if (snapshot.exists()) {
+        return snapshot.data();
+      } else {
         const wallet = {
           address,
           assets: {},
           events: [],
           market: {},
           offers: [],
-         };
-        // await saveWallet(wallet, address);
+        };
+        await saveWallet(wallet, address);
         return wallet;
-      //}
+      }
     }
   } catch (error) {
     console.error(`Unexpected error in getWallet. [Message: ${error.message}]`);
@@ -43,17 +43,17 @@ export const getWallet = async (address) => {
  * @throws COULD_NOT_SAVE_WALLET_TO_DB
  */
 export const addWalletAsset = async (wallet, newAsset) => {
-  // if (wallet && newAsset) {
-  //   const updatedWallet = {
-  //     ...wallet,
-  //     assets: {
-  //       ...wallet.assets,
-  //       [newAsset.details.asset]: newAsset,
-  //     },
-  //   };
-  //   await saveWallet(updatedWallet);
-  //   return updatedWallet;
-  // }
+  if (wallet && newAsset) {
+    const updatedWallet = {
+      ...wallet,
+      assets: {
+        ...wallet.assets,
+        [newAsset.details.asset]: newAsset,
+      },
+    };
+    await saveWallet(updatedWallet);
+    return updatedWallet;
+  }
   return wallet;
 };
 
@@ -189,15 +189,15 @@ export const relistWalletAsset = async (wallet, listedAsset, newEvent) => {
  * @throws COULD_NOT_SAVE_WALLET_TO_DB
  */
 export const saveWallet = async (wallet, merge = true) => {
-  // try {
-  //   if (wallet) {
-  //     const reference = doc(firestore, "wallets", wallet.address);
-  //     await setDoc(reference, wallet, { merge });
-  //   }
-  // } catch (error) {
-  //   console.error(
-  //     `Unexpected error in saveWallet. [Message: ${error.message}]`
-  //   );
-  //   throw new Error("COULD_NOT_SAVE_WALLET_TO_DB");
-  // }
+  try {
+    if (wallet) {
+      const reference = doc(firestore, "wallets", wallet.address);
+      await setDoc(reference, wallet, { merge });
+    }
+  } catch (error) {
+    console.error(
+      `Unexpected error in saveWallet. [Message: ${error.message}]`
+    );
+    throw new Error("COULD_NOT_SAVE_WALLET_TO_DB");
+  }
 };
