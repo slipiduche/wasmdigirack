@@ -185,77 +185,77 @@ export const get_asset = (asset_id, callback) => async (dispatch) => {
 export const get_listed_assets =
   (count, page, callback) => async (dispatch) => {
     try {
-      await Cardano.load();
-      const contractVersion = process.env.REACT_APP_MARTIFY_CONTRACT_VERSION;
+      // await Cardano.load();
+      // const contractVersion = process.env.REACT_APP_MARTIFY_CONTRACT_VERSION;
 
-      const listed = await getLockedUtxos(
-        contractAddress(contractVersion).to_bech32(),
-        { count, page }
-      );
-      //console.log(listed);
-      const listedLength = listed.length > 100 ? 100 : listed.length;
-      //console.log(listedLength);
+      // const listed = await getLockedUtxos(
+      //   contractAddress(contractVersion).to_bech32(),
+      //   { count, page }
+      // );
+      // //console.log(listed);
+      // const listedLength = listed.length > 100 ? 100 : listed.length;
+      // //console.log(listedLength);
       let listed_assets = [];
-      for (let index = 0; index < listedLength; index++) {
-        const asset = listed[index]["amount"]["1"]["unit"];
-        //console.log(asset);
-        const assetDetails = await getAssetDetails(asset);
-        //console.log(assetDetails);
-        const txhash0 = listed[index]["tx_hash"];
-        //console.log("txmetadata:");
-        const txmetadata = await getTxMetadata(txhash0);
-        //console.log(txmetadata);
-        let saleDetails, sellerAddressHex, royaltiesAddressHex;
-        for (const key in txmetadata) {
-          switch (txmetadata[key].label) {
-            case "100":
-              saleDetails = txmetadata[key].json_metadata;
-              break;
+      // for (let index = 0; index < listedLength; index++) {
+      //   const asset = listed[index]["amount"]["1"]["unit"];
+      //   //console.log(asset);
+      //   const assetDetails = await getAssetDetails(asset);
+      //   //console.log(assetDetails);
+      //   const txhash0 = listed[index]["tx_hash"];
+      //   //console.log("txmetadata:");
+      //   const txmetadata = await getTxMetadata(txhash0);
+      //   //console.log(txmetadata);
+      //   let saleDetails, sellerAddressHex, royaltiesAddressHex;
+      //   for (const key in txmetadata) {
+      //     switch (txmetadata[key].label) {
+      //       case "100":
+      //         saleDetails = txmetadata[key].json_metadata;
+      //         break;
 
-            case "406":
-              sellerAddressHex = txmetadata[key].json_metadata;
-              break;
-            case "407":
-              royaltiesAddressHex = txmetadata[key].json_metadata;
-              break;
-          }
-        }
-        const datumHash = listed[index]["data_hash"];
-        //saleDetails = txmetadata["0"]["json_metadata"];
-        //console.log(saleDetails);
-        //sellerAddressHex = txmetadata["1"]["json_metadata"];
-        //console.log(sellerAddressHex);
-        //console.log(royaltiesAddressHex);
-        const sellerAddressBytes = arrayToBytes(sellerAddressHex.sa32);
-        const sellerAddress = Cardano.Instance.Address.from_bytes(
-          fromHex(sellerAddressBytes)
-        );
-        const sellerAddress32 = await sellerAddress.to_bech32();
+      //       case "406":
+      //         sellerAddressHex = txmetadata[key].json_metadata;
+      //         break;
+      //       case "407":
+      //         royaltiesAddressHex = txmetadata[key].json_metadata;
+      //         break;
+      //     }
+      //   }
+      //   const datumHash = listed[index]["data_hash"];
+      //   //saleDetails = txmetadata["0"]["json_metadata"];
+      //   //console.log(saleDetails);
+      //   //sellerAddressHex = txmetadata["1"]["json_metadata"];
+      //   //console.log(sellerAddressHex);
+      //   //console.log(royaltiesAddressHex);
+      //   const sellerAddressBytes = arrayToBytes(sellerAddressHex.sa32);
+      //   const sellerAddress = Cardano.Instance.Address.from_bytes(
+      //     fromHex(sellerAddressBytes)
+      //   );
+      //   const sellerAddress32 = await sellerAddress.to_bech32();
 
-        //console.log(sellerAddress32);
+      //   //console.log(sellerAddress32);
 
-        const royaltiesAddressBytes = arrayToBytes(royaltiesAddressHex.ra32);
+      //   const royaltiesAddressBytes = arrayToBytes(royaltiesAddressHex.ra32);
 
-        const royaltiesAddress = Cardano.Instance.Address.from_bytes(
-          fromHex(royaltiesAddressBytes)
-        );
-        const royaltiesAddress32 = await royaltiesAddress.to_bech32();
-        //console.log(royaltiesAddress32);
-        const assetObject = {
-          status: {
-            datum: saleDetails,
-            datumHash: datumHash,
-            submittedBy: sellerAddress32,
-            artistAddress: royaltiesAddress32,
-            locked: true,
-          },
-          details: assetDetails,
-        };
-        //console.log(assetObject);
-        listed_assets.push(assetObject);
-      }
+      //   const royaltiesAddress = Cardano.Instance.Address.from_bytes(
+      //     fromHex(royaltiesAddressBytes)
+      //   );
+      //   const royaltiesAddress32 = await royaltiesAddress.to_bech32();
+      //   //console.log(royaltiesAddress32);
+      //   const assetObject = {
+      //     status: {
+      //       datum: saleDetails,
+      //       datumHash: datumHash,
+      //       submittedBy: sellerAddress32,
+      //       artistAddress: royaltiesAddress32,
+      //       locked: true,
+      //     },
+      //     details: assetDetails,
+      //   };
+      //   //console.log(assetObject);
+      //   listed_assets.push(assetObject);
+      // }
 
-      //listed_assets = await getLockedAssets(count, lastVisible);
+      listed_assets = await getLockedAssets(count, lastVisible);
 
       if (listed_assets) {
         let listed_assets_by_policy = {};
