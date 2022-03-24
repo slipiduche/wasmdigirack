@@ -2,7 +2,7 @@
   "name": "wasmdigirack",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://slipiduche.github.io/wasmdigirack",
+  "homepage": "https://wasmdigirack.vercel.app",
   "dependencies": {
     "@blueprintjs/core": "^3.53.0",
     "@blueprintjs/icons": "^3.32.0",
