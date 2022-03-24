@@ -27,6 +27,12 @@ const ListingDisplayWalletAssets = ({ walletAssets, state_wallet }) => {
             ? x.details.onchainMetadata.collection
                 .toLowerCase()
                 .includes(searchText.toLowerCase())
+              ? true
+              : x.details.policyId
+              ? x.details.policyId
+                  .toLowerCase()
+                  .includes(searchText.toLowerCase())
+              : false
             : false
           : false
       ) {
