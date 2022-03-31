@@ -14,7 +14,7 @@ import { toHex } from "../../utils/converter";
 
 export const listAsset = async (
   datum,
-  seller: { address: BaseAddress, utxos: [] },
+  seller,
   version,sa32,ra32
 ) => {
   try {
